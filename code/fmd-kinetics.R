@@ -48,7 +48,6 @@ viraemia_contact<-read.table(file.path(textdata.path,"Alexandersen2003_contact_v
 clinicalsigns_contact<-read.table(file.path(textdata.path,"Alexandersen2003_contact_clinicalsigns.csv"),sep=",",header=F)
 antibodies_contact<-read.table(file.path(textdata.path,"Alexandersen2003_contact_antibodies.csv"),sep=",",header=F)
 
-
 interpolate_range<-1:360
 fmd_diagnostics_df<-cbind(data.frame(time=interpolate_range),
                           InterpolateDiagnostics(mouthswab_inoculated,interpolate_range)[2],
@@ -75,7 +74,4 @@ names(fmd_diagnostics_df)[-1]<-c("mouthswab_inoculat",
 
 plot(fmd_diagnostics_df[1:6])
 plot(fmd_diagnostics_df[c(1,7:11)])
-
-
-
 
