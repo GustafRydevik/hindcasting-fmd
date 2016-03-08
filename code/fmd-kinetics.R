@@ -75,3 +75,9 @@ names(fmd_diagnostics_df)[-1]<-c("mouthswab_inoculat",
 plot(fmd_diagnostics_df[1:6])
 plot(fmd_diagnostics_df[c(1,7:11)])
 
+#Reading in digitized epicurve of the UK 2001 FMD outbreak 
+fmd_2001outbreak_df<-round(read.table(file.path(textdata.path,"FMD2001_report.csv"),sep=","))
+names(fmd_2001outbreak_df)<-c("week","casecount")
+fmd_outbreak_daily<-data.frame(day=1:(32*7),interpolated_casecount=approx(x=c(1,(fmd_2001outbreak_df$week)*7),y=c(1/7,fmd_2001outbreak_df$casecount/7),xout=1:(32*7))$y)
+fmd_outbreak_simulated<-data.frame(day=1:(32*7),sim_casecount=c(table(sample(factor(1:(32*7)),size=sum(fmd_2001outbreak_df$casecount),
+                                                                   prob =fmd_outbreak_daily$interpolated_casecount,replace=T))))
