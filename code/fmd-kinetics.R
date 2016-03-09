@@ -74,7 +74,7 @@ names(fmd_diagnostics_df)[-1]<-c("mouthswab_inoculat",
 
 plot(fmd_diagnostics_df[1:6])
 plot(fmd_diagnostics_df[c(1,7:11)])
-
+ggpairs(fmd_diagnostics_df[c(1,7:11)])
 #Reading in digitized epicurve of the UK 2001 FMD outbreak 
 fmd_2001outbreak_df<-round(read.table(file.path(textdata.path,"FMD2001_report.csv"),sep=","))
 names(fmd_2001outbreak_df)<-c("week","casecount")
