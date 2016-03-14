@@ -8,7 +8,7 @@ binarydata.path<-"./binarydata"
 
 cameroon_fmd_df<-read.table(file.path(textdata.path,"FMD-Gustaf.csv"),sep=",",header=T,row.names=1)
 
-
+library(GGally)
 
 ###This should be replaced by a library call later on
 lapply(dir(function.path,full.names=T),source)
@@ -81,3 +81,8 @@ names(fmd_2001outbreak_df)<-c("week","casecount")
 fmd_outbreak_daily<-data.frame(day=1:(32*7),interpolated_casecount=approx(x=c(1,(fmd_2001outbreak_df$week)*7),y=c(1/7,fmd_2001outbreak_df$casecount/7),xout=1:(32*7))$y)
 fmd_outbreak_simulated<-data.frame(day=1:(32*7),sim_casecount=c(table(sample(factor(1:(32*7)),size=sum(fmd_2001outbreak_df$casecount),
                                                                    prob =fmd_outbreak_daily$interpolated_casecount,replace=T))))
+
+
+fmd_diagnostics_df_plot<-fmd_diagnostics_df
+names(fmd_diagnostics_df_plot)[c(1,7:11)]<-c("Time","Mouthswab","Nasalswab","Viraemia","Clinical_signs","Antibodies")
+ggpairs(fmd_diagnostics_df_plot[c(1,7:11)], params=c(colour="#aa6985"),title="FMD diagnostics phaseplot")+theme_light(base_size=18)
