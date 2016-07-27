@@ -1,0 +1,119 @@
+---
+title: "Hindcasting Endemic Disease - Foot and Mouth Disease"
+author: "Gustaf Rydevik"
+date: "25 July 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+# 
+# bronsvoort_orig_data<-read.table(file.path(textdata.path,"FMD-Gustaf.csv"),sep=",",header=T,row.names=1)
+# set.seed(1000)
+# eval_data_ndx<-sort(sample(1:nrow(bronsvoort_orig_data),200))
+# ## eval_data_ndx
+##[1]   15   18   33   34   37   40   57   60   61   72   80   99  101  102  111  117  119  130  135  138  139  146  147  176  187  197  206  211  217 226 227
+##[32]  245  254  255  257  262  264  276  297  306  319  353  359  360  379  387  413  418  426  427  439  457  461  468  469  472  481  505 506  508 515  517
+##[63]  528  532  538  560  571  581  582  583  625  634  635  644  652  658  659  664  666  677  696  730  750  762  765  776  783  792  799  801  807  808  819
+##[94]  823  828  836  840  844  845  850  867  869  884  887  893  897  899  903  904  910  914  915  917  923  924  936  937  947  949  950  953  972  973  987
+##[125]  988 1002 1006 1012 1031 1075 1084 1085 1087 1093 1098 1117 1118 1121 1123 1126 1129 1131 1133 1138 1152 1156 1163 1196 1208 1231 1233 1239 1243 1244 1257
+##[156] 1261 1266 1270 1274 1278 1292 1299 1301 1304 1313 1330 1339 1341 1345 1352 1365 1371 1380 1407 1409 1411 1424 1425 1427 1434 1435 1439 1456 1463 1507 1511
+##[187] 1516 1517 1524 1533 1539 1545 1553 1566 1569 1594 1595 1596 1615 1618
+# bronsvoort_eval_data<-bronsvoort_orig_data[eval_data_ndx,]
+# write.csv(bronsvoort_eval_data,file=file.path(textdata.path,"FMD-Gustaf-eval.csv"))
+# bronsvoort_training_data<-bronsvoort_orig_data[-eval_data_ndx,]
+# write.csv(bronsvoort_training_data,file=file.path(textdata.path,"FMD-Gustaf-training.csv"))
+# rm(bronsvoort_orig_data)
+# rm(bronsvoort_eval_data)
+# rm(bronsvoort_training_data)
+bronsvoort_training_data<-read.csv(file.path(textdata.path,"FMD-Gustaf-training.csv"))
+
+
+```
+
+## Data
+
+The data used was collected by Bronsvoort etal in Cameroon. Full details can be found in ....
+
+There was the following diagnostic measures used on included cattle:
+
+
+-Danish C-ELISA
+FOr non-structural protein, so will pick up any serotype in theory. 
+
+kinetics from Bronsvoort2004
+
+-South American I-ELISA
+Also non-structural and will pick up any serotype
+
+-CHEKIT kit
+Final non-structural (least good, "sensitivity" of ~23%)
+
+kinetics from Bronsvoort2004
+
+-EITB - enzyme linked immunoelectrotransfer blot
+Non structural, but a binary yes/no response. Americans use EITB and I-ELISA as a combined diagnostic
+
+FMD_VNT are virus neutralisation test, where you do sequential dilutions of the virus and look whether antibodies react or not. 
+
+Higher the number, the greater the dilution with detectable virus levels. 
+FMD has seven different serotypes, with different geographical distributions. 
+Three VNT tests: A-serotype, O-serotype and SAT2 ("south-african territories") serotype.
+
+PRobang is used to scrape the cells to collect viruses for cultivation. Only done on animals where we think that something is going on.
+That's PbP A,o,and Sat2. From herds 32 onwards, we have collected the probang. The numbers are (probably) binary classifiers based on Antigen ELISA-results. 
+
+Finally, FMDS O, A, and SAT2 are the binary classifiers based on the VNT tests. 
+
+# 
+# FMD_VNT_A 
+
+# FMD_VNT_O 
+
+# FMD_VNT_SAT2 
+
+If an animal gets exposed, the animal will develop a particular antibody response that will last for years. The VNT results will therefore likely remain for a long time following exposure/infection.  The non-structural ELISA results will disappear within 6-12 months. 
+The probang has some sort of exponential decay of viruses/ likelihood of cultivation. So a latent probability of some sort...
+
+
+An additional thing for the future is that we have recording based on the growth of hoofs and how far up there are records of old lesions.
+
+In terms of animals, we have clinically infected, recently infected, old lesions, and healthy animals.
+
+Monlast is the herdsmans reporting, and can be used as a validation to compare with estimated times since infection. 
+
+
+One of the practical questions is to go through a herd and try and age lesions. But they did run into problems with sheep flocks that they missed in 2001, since sheep tends to not have clnical signs. Using a stat method would be useful here - something to bring up in a discussion.  In pig farms, at least three infection cycles before the outbreak was detected. Want to try and identify how far back was the herd infected. Being able3 to do this quite quickly would be very useful. 
+
+
+
+We can use Alexanderssen2003 as how a VNT response would look like post infection, but obviously conditional on a scaling factor to account for different units. Would go off the contact one.
+
+Names of researchers:
+
+Bergmann (iELISA)
+Bronsvoort
+Sorensen KJ (cELISA)
+Alexandersen
+Hamblin
+Brocchi
+Cuncliffe
+Dekker (review!)
+
+People doing long-term experimental infection/post-disease follow up. Possibly Bergmann
+Pirbright does short, 1-month studies. 
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

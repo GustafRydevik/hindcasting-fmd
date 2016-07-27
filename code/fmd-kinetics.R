@@ -28,7 +28,9 @@ lapply(dir(function.path,full.names=T),source)
 
 # FMD_VNT_SAT2 
 
-
+#Integrate info from
+#Comparison of Two 3ABC Enzyme-Linked Immunosorbent Assays for 
+#Diagnosis of Multiple-Serotype Foot-and-Mouth Disease in a Cattle Population in an Area of Endemicity
 
 
 # Using the below publication as a source of FMD test kinetics. 
@@ -85,4 +87,5 @@ fmd_outbreak_simulated<-data.frame(day=1:(32*7),sim_casecount=c(table(sample(fac
 
 fmd_diagnostics_df_plot<-fmd_diagnostics_df
 names(fmd_diagnostics_df_plot)[c(1,7:11)]<-c("Time","Mouthswab","Nasalswab","Viraemia","Clinical_signs","Antibodies")
-ggpairs(fmd_diagnostics_df_plot[c(1,7:11)], params=c(colour="#aa6985"),title="FMD diagnostics phaseplot")+theme_light(base_size=18)
+ggpairs_col<-wrap(ggpairs,color="#aa6985")
+ggpairs(fmd_diagnostics_df_plot[c(1,7:11)],title="FMD diagnostics phaseplot")+theme_light(base_size=18)
