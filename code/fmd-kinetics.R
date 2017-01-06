@@ -6,14 +6,14 @@ textdata.path<-"./textdata"
 
 binarydata.path<-"./binarydata"
 
-cameroon_fmd_df<-read.table(file.path(textdata.path,"FMD-Gustaf.csv"),sep=",",header=T,row.names=1)
+tmp<-read.table(file.path(textdata.path,"FMD-Gustaf.csv"),sep=",",header=T,row.names=1)
 
 library(GGally)
 
 ###This should be replaced by a library call later on
 lapply(dir(function.path,full.names=T),source)
 
-#Danish C-ELISA
+#FMD_Danish C-ELISA
 
 #South American I-ELISA
 

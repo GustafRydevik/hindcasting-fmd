@@ -15,7 +15,7 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
+```{r read_data}
 # 
 # bronsvoort_orig_data<-read.table(file.path(textdata.path,"FMD-Gustaf.csv"),sep=",",header=T,row.names=1)
 # set.seed(1000)
@@ -35,7 +35,7 @@ When you click the **Knit** button a document will be generated that includes bo
 # rm(bronsvoort_orig_data)
 # rm(bronsvoort_eval_data)
 # rm(bronsvoort_training_data)
-bronsvoort_training_data<-read.csv(file.path(textdata.path,"FMD-Gustaf-training.csv"))
+bronsvoort_training_data<-read.csv(file.path(textdata.path,"FMD-Gustaf-training.csv")) 
 
 
 ```
@@ -117,3 +117,15 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+## Section 1: using the cameroon data to estimate time since incursion. 
+
+
+A basic model, just using the cameroon data itself, would likely look something like the following:
+
+monlast~ prior(f(incidence))
+
+P(probang-positive,VNT-Positive)~f(monlast, age,...) ## Could separate, or not...
+
+
