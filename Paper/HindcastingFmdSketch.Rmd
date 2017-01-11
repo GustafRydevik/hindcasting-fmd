@@ -127,5 +127,9 @@ A basic model, just using the cameroon data itself, would likely look something 
 monlast~ prior(f(incidence))
 
 P(probang-positive,VNT-Positive)~f(monlast, age,...) ## Could separate, or not...
+VNT~f(monlast)
+ELISA~F(monlast)
+
+
 
 
