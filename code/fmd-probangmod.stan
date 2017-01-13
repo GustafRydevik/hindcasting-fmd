@@ -1,15 +1,16 @@
 data {
   // Define variables in data
   // Number of tested cattle (an integer)
-  int<lower=0> N;
+  int<lower=0> Ne;
+  int<lower=0> Np;
   // Number of parameters
   int<lower=0> p;
   // Variables
   int<lower=0,upper=1> probang[N];
-   int<lower=0,upper=1> probang[N];
   int<lower=0,upper=1> hcode[N];
- 
   int<lower=0,upper=1>  vnt[N];
+  
+  
   real<lower=0> age[N];
   
   //herd related

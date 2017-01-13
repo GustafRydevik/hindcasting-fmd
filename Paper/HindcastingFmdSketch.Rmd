@@ -7,6 +7,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = normalizePath('../'))
 ```
 
 ## R Markdown
@@ -16,6 +17,15 @@ This is an R Markdown document. Markdown is a simple formatting syntax for autho
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r read_data}
+
+output.path<-"./output"
+code.path<-"./code"
+function.path<-"./code/functions"
+
+textdata.path<-"./textdata"
+
+binarydata.path<-"./binarydata"
+
 # 
 # bronsvoort_orig_data<-read.table(file.path(textdata.path,"FMD-Gustaf.csv"),sep=",",header=T,row.names=1)
 # set.seed(1000)
@@ -124,12 +134,39 @@ Note that the `echo = FALSE` parameter was added to the code chunk to prevent pr
 
 A basic model, just using the cameroon data itself, would likely look something like the following:
 
-monlast~ prior(f(incidence))
 
-P(probang-positive,VNT-Positive)~f(monlast, age,...) ## Could separate, or not...
-VNT~f(monlast)
-ELISA~F(monlast)
+We have diagnostic data at the individual cow level; Probang measurements, VNT measurements, and aged lesions:
+$y_{i1}=Probang_{i}$ (which is binary)
+$y_{i2}=VNT_{i}$ (which could be treated as binary or as continous)
+$y_{i3}=Lesion_{i}$ (which is ordinal).
+
+These are all measurements of three different latent processes. 
+The probang results measures whether or not it was positive to successfully culture FMDV from the throat(?) of the animal, and can thus be seen as an indirect indicator of the amount of virus present in the throat. This is the first latent component, 
+$l_{i1}(d_i)=exp(d_i,\theta_{probang})$. We here assume that the the virus declines exponentially following infection, which is a simplistic but useful approximation. [Is it?]
+
+The VNT results is an indicator of the level of FMD-specific antibodies present in the blood of the animal. This is the second latent component,
+$l_{i2}(d_i)=Logistic(d_i,\theta_{VNT})$. In this case we assume that the antibody response follows a logistic growth curve.
+
+Finally, the lesion aging attempts to measure the amount of new growth that has occured on the hoves of animals since an FMD infection (which leaves very characteristic markings at the join between legs and hooves,that then migrate downwards).
+$l_{i3}(d_i)=d_i*\theta_{lesions}$. We will simply model this process as a linear function of time since infection. 
+
+The full latent process can thus be written as 
+
+ $P(L|T,E,\theta_{L})=exp(d_i,\theta_{probang}),Logistic(d_i,\theta_{VNT}),d_i*\theta_{lesions})$ 
 
 
 
+
+$monlast~ prior(f(incidence))$
+
+$P(probang-positive,VNT-Positive)~f(monlast, age,...)$ ## Could separate, or not...
+$VNT\sim f(monlast)$
+$ELISA \sim F(monlast)$
+
+
+$P(probang=1)=Bernoulli(logit(\theta_1))$
+$\theta=f_1(T_{infected})+g_1(age,age^2))$
+
+$P(Vnt=1)=Bernoulli(logit(\theta_2))$
+$\theta=f_2(T_{infected})+g_2(age,age^2))$
 

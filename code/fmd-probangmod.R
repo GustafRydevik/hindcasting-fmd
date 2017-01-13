@@ -37,3 +37,21 @@ dat <- list(N        = nrow(bronsvoort_training_data_clean),
             herd=herd_monlast$hcode,
             monlast     = herd_monlast$monlast
             )
+
+set.seed(1337)
+pred.ndx<-sample(1:nrow(bronsvoort_training_data_clean),300)
+est.ndx<-setdiff(1:nrow(bronsvoort_training_data_clean,pred.ndx)
+                 
+dat <- list(Ne        = length(est.ndx),
+            Np        =length(pred.ndx),
+            p        = 6,
+            pred.ndx=pred.ndx,
+            est.ndx=est.ndx,
+            probang    = bronsvoort_training_data_clean$Probang,
+            age      = bronsvoort_training_data_clean$age,
+            vnt     = bronsvoort_training_data_clean$VNTAny,
+            hcode=bronsvoort_training_data_clean$hcode,
+            H=nrow(herd_monlast),
+            herd=herd_monlast$hcode,
+            monlast     = herd_monlast$monlast
+)
