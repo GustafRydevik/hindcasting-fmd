@@ -1,0 +1,1096 @@
+CENTRE_COD,HERD_CODE,ANIMAL_COD,MOUTH_LESI,COM_MOUTH,FOOT_LESIO,COM_FOOT
+VDI,3,11,0,,0,
+VDI,3,12,0,,0,
+VDI,3,13,0,,0,
+VDI,3,14,0,,0,
+VDI,3,15,0,,0,
+VDI,3,16,0,,0,
+VDI,3,17,0,,0,
+VDI,3,18,0,,0,
+VDI,3,19,0,,0,
+VDI,3,20,0,,0,
+VDI,3,21,0,,0,
+VDI,3,22,0,,0,
+VDI,3,23,0,,0,
+VDI,3,24,0,,0,
+VDI,3,25,0,,0,
+VDI,3,26,0,,0,
+VDI,3,27,0,,0,
+VDI,3,28,0,,0,
+VDI,3,29,0,,0,
+VDI,3,30,0,,0,
+VMR,31,1,0,,0,
+VMR,31,2,0,,1,DISRUPTION OF HOOF GROWTH
+VMR,31,3,0,,1,DISRUPTION OF HOOF GROWTH
+VMR,31,4,0,,1,DISRUPTION OF HOOF GROWTH
+VMR,31,5,0,,0,
+VMR,31,6,0,,0,
+VMR,31,7,1,old lesions both sides of dorsal tongue 1*1.5cm,0,
+VMR,31,8,0,,0,
+VMR,31,9,0,,0,
+VMR,31,10,0,,0,
+BAT,32,2,1,old lesions on dorsal tongue 2*3 &2*2cm,0,
+BAT,32,3,1,old lesions on dorsal tongue 3*3cm,0,
+BAT,32,4,0,,0,
+BAT,32,5,0,,0,
+BAT,32,6,0,,0,
+BAT,32,7,0,,0,
+BAT,32,8,0,,0,
+BAT,32,9,0,,0,
+BAT,32,10,0,,0,
+BAT,33,1,0,,0,
+BAT,33,2,0,,0,
+BAT,33,3,0,,0,
+BAT,33,4,0,,0,
+BAT,33,5,0,,0,
+BAT,33,6,0,,0,
+BAT,33,7,0,,0,
+BAT,33,8,0,,0,
+BAT,33,9,0,,0,
+BAT,33,10,0,,0,
+BRO,34,1,0,,0,
+BRO,34,2,0,,0,
+BRO,34,3,0,,0,
+BRO,34,4,0,,0,
+BRO,34,5,1,small wound on base of tongue,0,
+BRO,34,6,0,,0,
+BRO,34,7,0,,0,
+BRO,34,8,0,,1,break in hoof growth
+BRO,34,9,0,,0,
+BRO,34,10,0,,0,
+BRO,35,1,0,,0,
+BRO,35,2,0,,0,
+BRO,35,3,0,,0,
+BRO,35,4,0,,1,disruption in hoof growth
+BRO,35,5,0,,0,
+BRO,35,6,0,,0,
+BRO,35,7,1,small lesion on dorsal tongue 1*1cm,0,
+BRO,35,8,0,,0,
+BRO,35,9,0,,0,
+BRO,35,10,0,,0,
+BAT,36,1,1,old lesion dorsal tongue 4x3cm,0,
+BAT,36,2,1,large old lesion LHS dorsal tongue 4x5cm; small old lesion RHS dorsl tongue 0.5x0.5 cm,0,
+BAT,36,3,0,,0,
+BAT,36,4,0,,0,
+BAT,36,5,0,,1,break in growth of hooves
+BAT,36,6,0,,1,break in growth of hooves
+BAT,36,7,0,,0,
+BAT,36,8,0,,0,
+BAT,36,9,0,,0,
+BAT,36,10,0,,0,
+BSO,37,1,0,,0,
+BSO,37,2,0,,0,
+BSO,37,3,1,small old lesion dorsal tongue 1x0.5 cm,0,
+BSO,37,4,1,old lesion dorsal tongue 0.5x3 cm,0,
+BSO,37,5,0,,1,disruption of gowth of hooves
+BSO,37,6,0,,0,
+BSO,37,7,0,,0,
+BSO,37,8,0,,0,
+BSO,37,9,0,,0,
+BSO,37,10,0,,0,
+BSO,38,6,0,,0,
+BSO,38,7,0,,0,
+BSO,38,8,1,old lesion both sides of dorsal tongue 2x1 cm,0,
+BSO,38,9,0,,0,
+BSO,38,10,0,,0,
+BSO,38,11,0,,0,
+BSO,38,12,0,,0,
+BSO,38,13,1,large old lesion RHS dorsal tongue 3x3 cm,0,
+BSO,38,14,0,,1,break in growth of hooves
+BSO,38,15,0,,0,
+BBO,39,1,1,old lesion dorsal tongue 1x1 cm,0,
+BBO,39,2,0,,0,
+BBO,39,3,0,,0,
+BBO,39,4,1,old lesion dorsal tongue 1.5x3 cm,0,
+BBO,39,5,0,,0,
+BBO,39,6,0,,0,
+BBO,39,7,0,,0,
+BBO,39,8,0,,0,
+BBO,39,9,1,couple of small erosions dorsal tongue 1x0.5 cm,1,disruption of growth of hooves
+BBO,40,1,1,small lesion dorsal tongue 0.5x0.5 cm,0,
+BBO,40,2,0,,0,
+BBO,40,3,1,"multiple old lesions dorsal tongue, 1x2cm; 2x4cm; 1x1 cm; 0.5x3 cm",0,
+BBO,40,4,0,,0,
+BBO,40,5,1,"two old lesions LHS dorsal tongue, 1x2 cm; 1x1.5cm",0,
+BBO,40,6,0,,0,
+BBO,40,7,0,,0,
+BBO,40,8,0,,0,
+BBO,40,9,0,,0,
+BBO,40,10,0,,0,
+BBO,41,1,0,,1,break in growth of hooves
+BBO,41,2,0,,0,
+BBO,41,3,0,,0,
+BBO,41,4,1,old lesion LHS of tongue,0,
+BBO,41,5,0,,0,
+BBO,41,7,0,,0,
+BBO,41,8,0,,0,
+BBO,41,10,0,,0,
+BMM,43,1,0,,1,ulcer RH bulb of heel
+BMM,43,2,0,,0,
+BMM,43,3,0,,0,
+BMM,43,4,1,cut? Dorsal tongue 1x0.5 cm,0,
+BMM,43,5,0,,0,
+BMM,43,6,0,,1,break in growth of hooves
+BMM,43,7,0,,0,
+BMM,43,8,0,,0,
+BMM,43,9,0,,0,
+BMM,43,10,0,,0,
+VWM,45,1,0,,0,
+VWM,45,2,0,,0,
+VWM,45,3,1,old lesion dorsal tongue 3x0.5 cm,0,
+VWM,45,4,0,,0,
+VWM,45,5,1,old lesion on dorsal tongue (2x2 cm),0,
+VWM,45,6,0,,0,
+VWM,45,7,0,,0,
+VWM,45,8,0,,0,
+VWM,45,9,0,,0,
+VWM,45,10,0,,0,
+VWM,46,1,1,old lesion dorsal tongue (1x1.5 cm),1,break in growth of hooves
+VWM,46,2,1,old wound on LHS dorsal tongue,0,
+VWM,46,3,0,,0,
+VWM,46,4,0,,0,
+VWM,46,5,0,,0,
+VWM,46,6,0,,0,
+VWM,46,7,1,old lesion dorsal tongue 0.5x0.5 cm,0,
+VWM,46,8,0,,0,
+VWM,46,9,0,,0,
+VWM,46,10,0,,0,
+FWU,47,1,0,,0,
+FWU,47,2,0,,0,
+FWU,47,3,0,,0,
+FWU,47,4,0,,0,
+FWU,47,5,0,,0,
+FWU,47,6,1,"wound dorsal tongue, 1.5x0.5cm",0,
+FWU,47,7,0,,0,
+FWU,47,8,1,old lesion 2x3cm on dorsal tongue,0,
+FWU,47,9,0,,0,
+FWU,47,10,0,,0,
+MYG,48,1,0,,0,
+MYG,48,2,0,,0,
+MYG,48,3,0,,0,
+MYG,48,4,1,old wound dorsal tongue (1x0.5 cm),0,
+MYG,48,5,0,,0,
+MYG,48,6,0,,0,
+MYG,48,7,0,,0,
+MYG,48,8,0,,0,
+MYG,48,9,0,,1,break in the growth of the hooves
+MYG,48,10,0,,0,
+MNI,49,1,0,,0,
+MNI,49,2,0,,0,
+MNI,49,3,0,,0,
+MNI,49,4,1,old lesions on dorsal tongue; 4x1.5cm; 1x1cm; 3x1cm,1,break in the growth of the hooves
+MNI,49,5,1,"old lesion on dorsal tongue, 1.5x1 cm",0,
+MNI,49,6,0,,0,
+MNI,49,7,0,,0,
+MNI,49,8,1,"old lesion dorsal tongue, LHs 1x2cm; RHs 1x1cm",0,
+MNI,49,9,0,,0,
+MNI,49,10,0,,0,
+MNI,50,3,0,,0,
+MNI,50,4,0,,0,
+MNI,50,5,0,,0,
+MNI,50,6,0,,0,
+MNI,50,7,0,,0,
+MNI,50,8,0,,0,
+MNI,50,9,0,,0,
+MNI,50,10,0,,0,
+MNI,50,1,0,,0,
+MNI,50,2,0,,0,
+MNI,51,1,0,,1,break in growth of hooves
+MNI,51,2,0,,0,
+MNI,51,3,0,,0,
+MNI,51,4,0,,0,
+MNI,51,5,0,,0,
+MNI,51,6,0,,0,
+MNI,51,7,0,,0,
+MNI,51,8,0,,0,
+MNI,51,9,1,"old lesion dorsal tongue, 2.5x1cm smaller ones dotted on dorsal tongue",0,
+MNI,51,10,0,,0,
+MYG,52,1,1,"old lesion dorsal tongue, 2x1cm",0,
+MYG,52,2,0,,0,
+MYG,52,3,0,,1,break in the growth of hooves
+MYG,52,4,1,"old lesion dorsal tongue, 2x2cm",0,
+MYG,52,5,1,lesion LHS 1x1cm; RHS 0.5x0.5,0,
+MYG,52,6,0,,0,
+MYG,52,8,0,,0,
+MYG,52,9,0,,0,
+MYG,52,10,0,,0,
+MFA,53,6,0,,0,
+MFA,53,7,0,,0,
+MFA,53,8,1,"old lesions dorsal tongue, both sides, 4x4cm, couple of old lesions on dental pad",0,
+MFA,53,9,1,small old lesion on RHs dorsal tongue 0.5x0.5cm,0,
+MFA,53,10,0,,0,
+MFA,53,11,0,,0,
+MFA,53,12,0,,0,
+MFA,53,13,0,,0,
+MFA,53,14,0,,0,
+MFA,53,15,0,,0,
+MFA,54,1,1,small old lesion RHS dorsal tongue 1x1cm,0,
+MFA,54,2,1,small old lesion 0.5x1cm on the tongue,0,
+MFA,54,3,0,,0,
+MFA,54,4,0,,0,
+MFA,54,5,0,,0,
+MFA,54,6,1,small old lesion RHs dorsal tongue 1.5x0.5cm,0,
+MFA,54,7,0,,0,
+MFA,54,8,0,,0,
+MFA,54,9,0,,0,
+MFA,54,10,0,,0,
+MFA,55,1,1,"old lesion dorsal tongue, 2x2cm",0,
+MFA,55,2,0,,0,
+MFA,55,3,0,,0,
+MFA,55,4,0,,0,
+MFA,55,5,1,old lesion LHS dorsal tongue 0.5x0.5cm,1,thickem interdigital skin on both forelimbs
+MFA,55,6,1,large old lesion dorsal tongue 3x3cm,0,
+MFA,55,7,0,,0,
+MFA,55,8,0,,0,
+MFA,55,9,0,,0,
+MFA,55,10,0,,0,
+MFA,56,8,1,old lesion RHs dorsal tongue 1.5x1.5cm,1,break in the growth of the hooves
+MFA,56,9,0,,0,
+MFA,56,10,0,,0,
+MFA,56,11,0,,1,break in the growth of the hooves
+MFA,56,12,1,dotted lesions on RHS of tongue; LHS 1x1cm,0,
+MFA,56,13,1,"RHS tip of tongue old lesion 1x1cm, another 3x2cm",0,
+MFA,57,1,0,,0,
+MFA,57,3,0,,0,
+MFA,57,4,0,,0,
+MFA,57,5,0,,0,
+MFA,57,6,0,,0,
+MFA,57,7,0,,1,break in growth of hooves all 4 feet
+MFA,57,8,0,,1,break in growth of hooves all 4 feet
+MFA,57,9,0,,1,break in growth of hooves all 4 feet
+MFA,57,10,0,,0,
+MKL,58,1,0,,1,thickening of the interdigital skin all 4 feet
+MKL,58,2,0,,0,
+MKL,58,3,1,small old lesion LHS 1.5x0.5cm; small old lesion RHS 1x0.5cm,0,
+MKL,58,4,0,,1,break in growth of hooves
+MKL,58,5,0,,0,
+MKL,58,6,0,,1,break in growth of hooves
+MKL,58,7,0,,1,break in growth of hooves
+MKL,58,8,0,,1,rough interdigital skin
+MKL,58,9,0,,0,
+MKL,59,1,0,,1,break in growth of hooves
+MKL,59,2,0,,1,break in growth of hooves
+MKL,59,3,1,old lesion LHS 2.5x2cm,1,break in growth of hooves
+MKL,59,4,0,,0,
+MKL,59,5,1,old lesion dorsal tongue 2x3cm,0,
+MKL,59,6,0,,0,
+MKL,59,7,0,,0,
+MKL,60,1,0,,1,break in growth of hooves
+MKL,60,2,0,,1,break in growth of hooves
+MKL,60,3,0,,0,
+MKL,60,4,0,,1,break in the groth of 2 hind hooves
+MKL,60,5,0,,0,
+MKL,60,6,0,,0,
+MKL,60,7,0,,1,reak in growth in hooves
+MKL,60,8,0,,0,
+MKL,60,9,0,,0,
+MKL,60,10,0,,0,
+MGI,61,1,1,small lesion on tip of tongue 0.5x0.5cm,0,
+MGI,61,2,0,,0,
+MGI,61,3,0,,0,
+MGI,61,4,0,,0,
+MGI,61,5,0,,0,
+MGI,61,6,0,,0,
+MGI,61,7,1,old lesion RHS 0.5x0.5cm,0,
+MGI,61,8,0,,0,
+MGI,61,9,0,,0,
+MGI,61,10,0,,0,
+MGI,62,1,0,,0,
+MGI,62,2,0,,0,
+MGI,62,3,0,,0,
+MGI,62,4,1,"old lesion dorsal tongue, 0.5x0.5cm",0,
+MGI,62,5,0,,0,
+MGI,62,6,0,,0,
+MGI,62,7,0,,0,
+MGI,62,8,0,,0,
+MGI,62,9,1,"old lesion RHS dorsal tongue, 2.5x1.5cm",0,
+MGI,62,10,0,,0,
+MGI,63,1,0,,0,
+MGI,63,2,1,"old lesion RHS dorsal tongue, 4x2cm",0,
+MGI,63,3,1,old lesion RHS dorsal tongue 1x1cm,0,
+MGI,63,4,0,,0,
+MGI,63,5,1,spotted old lesions dorsal tongue RHS,0,
+MGI,63,6,0,,0,
+MGI,63,7,0,,0,
+MGI,63,8,0,,0,
+MGI,63,9,0,,0,
+MGI,63,10,0,,0,
+FKE,64,1,1,"old lesion RHS dorsal tongue, 0.5x0.5cm",0,
+FKE,64,2,0,,0,
+FKE,64,3,0,,0,
+FKE,64,4,0,,0,
+FKE,64,5,0,,0,
+FKE,64,6,0,,0,
+FKE,64,7,0,,0,
+FKE,64,8,0,,0,
+FKE,64,9,0,,0,
+FKE,64,10,0,,0,
+FKE,65,1,0,,0,
+FKE,65,2,0,,0,
+FKE,65,3,0,,0,
+FKE,65,4,1,old lesion dorsal tongue 3x4cm,0,
+FKE,65,5,1,old lesion LHS dorsal tongue 3x2cm,0,
+FKE,65,6,0,,0,
+FKE,65,7,0,,0,
+FKE,65,8,0,,0,
+FKE,65,9,0,,0,
+FKE,65,10,0,,0,
+FKE,66,1,0,,0,
+FKE,66,2,0,,0,
+FKE,66,3,0,,0,
+FKE,66,4,1,"old epithelising lesion dorsaltongue, 1.5x1.5cm",0,
+FKE,66,5,0,,0,
+FKE,66,6,0,,0,
+FKE,66,7,0,,0,
+FKE,66,8,0,,0,
+FKE,66,9,0,,0,
+FKE,66,10,0,,0,
+FKE,67,1,0,,0,
+FKE,67,2,0,,0,
+FKE,67,3,0,,0,
+FKE,67,4,0,,0,
+FKE,67,5,0,,0,
+FKE,67,6,0,,0,
+FKE,67,7,0,,0,
+FKE,67,8,0,,0,
+FKE,67,9,0,,0,
+FKE,67,10,0,,0,
+FKE,68,1,0,,0,
+FKE,68,2,1,lesion dorsal tongue .5*1cm,0,
+FKE,68,3,0,,0,
+FKE,68,4,0,,1,break in growth of hoof
+FKE,68,5,1,old lesion dorsal tongue 1*1cm,0,
+FKE,68,6,0,,0,
+FKE,68,7,0,,0,
+FKE,68,8,0,,0,
+FKE,68,9,0,,0,
+FKE,68,10,0,,1,small scab in interdigital space RF &break in growth of hoof
+FKE,69,1,0,,0,
+FKE,69,2,1,old lesions on dorsal tongue 2.5*3cm &0.5*1.5cm,0,
+FKE,69,3,0,,0,
+FKE,69,4,0,,1,crack in horn of hoof RF
+FKE,69,5,0,,0,
+FKE,69,6,0,,0,
+FKE,69,7,0,,0,
+FKE,69,8,0,,0,
+FKE,69,9,0,,0,
+FKE,69,10,0,,0,
+FWU,70,6,0,,0,
+FWU,70,7,0,,1,break in growth of hoof
+FWU,70,8,0,,0,
+FWU,70,9,0,,0,
+FWU,70,10,0,,0,
+FWU,70,11,0,,0,
+FWU,70,12,0,,0,
+FWU,70,13,0,,0,
+FWU,70,14,0,,0,
+FWU,70,15,0,,0,
+FWU,71,1,0,,0,
+FWU,71,2,1, lesion on tongue 0.5*0.5cm right side,0,
+FWU,71,3,1, lesion on tongue 0.5*0.5cm&2*1.5cm left side,0,
+FWU,71,4,0,,0,
+FWU,71,5,0,,1,interdigital skin edematous both fore feet
+FWU,71,6,0,,0,
+FWU,71,7,0,,0,
+FWU,71,8,1,healing lesions 1*5cm on dental pad.+lower lip 1*1cm+several small lesions on dental pad,1,fresh wounds in interdigital space all feet
+FWU,71,9,1,"lesions on tip of tongue, fresh lesion on rt side of tongue 3*2cm,large lesion on dorsum of tongue4*3cm & on dental pad 5*4cm",1,fresh wounds in interdigital space
+FWU,71,10,1,0.5x0.5cm wound dorsal tongue,0,
+FDL,73,1,0,,0,
+FDL,73,2,0,,0,
+FDL,73,3,0,,0,
+FDL,73,4,0,,0,
+FDL,73,5,0,,0,
+FDL,73,6,0,,0,
+FDL,73,7,0,,0,
+FDL,73,8,0,,0,
+FDL,73,9,0,,0,
+FDL,73,10,0,,0,
+FDL,74,1,0,,0,
+FDL,74,2,0,,0,
+FDL,74,3,1,old lesion LHS dorsal tongue 1x1cm,0,
+FDL,74,4,0,,0,
+FDL,74,5,0,,0,
+FDL,74,6,0,,0,
+FDL,74,7,0,,0,
+FDL,74,8,0,,0,
+FDL,74,9,1,"multiple old lesions on dorsal tongue, 1x1cm",0,
+FDL,74,10,1,"old lesion LHS dorsal tongue; 1.5x1cm, 1x1cm",0,
+VMM,75,1,1,"small old lesion RHS dorsal tongue, 1x1cm",0,
+VMM,75,2,0,,0,
+VMM,75,3,0,,0,
+VMM,75,4,1,"old lesion caudal dorsal tongue, ?x?cm",0,
+VMM,75,5,0,,0,
+VMM,75,6,0,,0,
+VMM,75,7,0,,0,
+VMM,75,8,0,,0,
+VMM,75,9,1,"old lesion LHS dorsal tongue, 2x1.5cm",0,
+VMM,75,10,0,,0,
+VMM,76,1,0,,0,
+VMM,76,2,1,"old lesion dorsal tongue, 3x2cm; 2x1cm",0,
+VMM,76,3,0,,0,
+VMM,76,4,1,"large old lesion doesal tongue, 4x3cm",0,
+VMM,76,5,0,,0,
+VMM,76,6,0,,0,
+VMM,76,7,0,,1,interdigital skin on front feet slightly 'puffy'/edematous
+VMM,76,8,0,,0,
+VMM,76,9,0,,0,
+VMM,76,10,0,,0,
+FDL,77,1,1,"old lesion dorsal tongue, 3x2cm",0,
+FDL,77,2,0,,0,
+FDL,77,3,0,,0,
+FDL,77,4,0,,0,
+FDL,77,5,1,"old lesion, small, dorsal tongue 1x0.5cm",0,
+FDL,77,6,0,,0,
+FDL,77,7,0,,0,
+FDL,77,8,0,,0,
+FDL,77,9,0,,0,
+FDL,77,10,0,,0,
+FGL,78,7,0,,0,
+FGL,78,8,0,,0,
+FGL,78,9,1,old lesion 4x3cm RHS of dorsal tongue,0,
+FGL,78,10,0,,0,
+FGL,78,11,0,,0,
+FGL,78,12,0,,0,
+FGL,78,13,0,,0,
+FGL,78,14,0,,0,
+FGL,78,15,0,,0,
+FGL,79,1,1,"old lesion RHS dorsal tongue, 2x4cm",0,
+FGL,79,2,0,,0,
+FGL,79,3,1,"old lesion RHS dorsal tongue, 0.5x0.5cm",0,
+FGL,79,4,0,,0,
+FGL,79,5,0,,0,
+FGL,79,6,0,,0,
+FGL,79,7,1,"old wound, 1x1cm dorsal tongue",0,
+FGL,79,8,0,,1,"break in growth of hooves, and LF interdigital skin thickened/puffy"
+FGL,79,9,0,,0,
+FGL,79,10,0,,0,
+FGL,80,1,0,,0,
+FGL,80,2,0,,1,granulating lesions on all 4 feet interdigital skin
+FGL,80,3,1,"old lesion dorsal tongue, 0.5x1.5cm. Cut ? 1cm long healing at tip of tongue",1,interdigital skin swollen/puffy all 4 feet
+FGL,80,4,0,,0,
+FGL,80,5,1,"old lesions on RHS near tip of dorsal tongue, 1x1cm, 1x1.5cm",1,interdigital skin swollen on bothy hind feet
+FGL,80,6,0,,1,granulating lesions on interdigital skin of both hind feet
+FGL,80,7,0,,1,ruptured lesions with early granulation. Horn of the bulbs of heels under run and sluffing. All 4 feet.
+FGL,80,8,1,"deep granulating erosion on dorsal tongue, 1x1cm",1,"RF ruptured vesicle and early granulation, both hind feet have swollen interdigital skin"
+FGL,80,9,0,,1,LF granulating lesion interdigital skin
+FGL,80,10,0,,0,
+VNG,81,1,0,,0,
+VNG,81,2,0,,0,
+VNG,81,3,0,,0,
+VNG,81,4,1,"old lesion 4x3cm on dorsal tongue,  and 1x2cm RHS",0,
+VNG,81,5,1,old lesion dorsal tongue 3x2cm,0,
+VNG,81,6,0,,0,
+VNG,81,7,0,,0,
+VNG,81,8,0,,0,
+VNG,81,9,0,,0,
+VNG,81,10,0,,0,
+DDI,82,1,1,old lesions on dorsal tongue 3*1.5cm &2*.5cm,1,Thick interdigital skin on all 4 ft
+DDI,82,2,1,old dotted lesions on left side of tongue,1,Thick & rough interdigital skin on 2 hind legs
+DDI,82,3,0,,0,
+DDI,82,4,0,,1,Thick & rough interdigital skin on 2 HL
+DDI,82,5,1,old lesions on dorsal tongue4*3 &3*2CM both on rt side,0,
+DDI,82,6,1,rough tongue,0,
+DDI,82,7,0,,1,Thick interdigital skin on all 4ft
+DDI,82,8,0,,0,
+DDI,82,9,0,,1,Thick interdigital skin on all 4ft
+DDI,82,10,0,,0,
+DDI,83,1,0,,0,
+DDI,83,2,0,,0,
+DDI,83,3,0,,0,
+DDI,83,4,0,,0,
+DDI,83,5,0,,0,
+DDI,83,6,0,,0,
+DDI,83,7,0,,0,
+DDI,83,8,0,,0,
+DDI,83,9,0,,0,
+DDI,83,10,0,,0,
+DDI,84,1,0,,0,
+DNL,85,1,0,,0,
+DNL,85,2,0,,0,
+DNL,85,3,1,old lesion on dorsal tongue 1*3cm,0,
+DNL,85,4,1,old lesion on dorsal tongue .5*.5cm,1,break in the growth of the hoof
+DNL,85,5,0,,0,
+DNL,85,6,0,,0,
+DNL,85,7,0,,0,
+DNL,85,8,0,,0,
+DNL,85,9,0,,0,
+DNL,85,10,0,,0,
+DNL,86,1,1,old lesion dorsal tongue 1x0.5 cm,0,
+DNL,86,2,0,,1,interdigital skin thicken on hind 2 feet
+DNL,86,3,1,"old lesion LHS dorsal tongue, 3x3cm",0,
+DNL,86,4,0,,0,
+DNL,86,5,1,"old lesion dorsal tongue, 2x0.5cm",0,
+DNL,86,6,0,,0,
+DNL,86,7,0,,0,
+DNT,87,1,1,old lesion dorsal tongue 2x1cm,0,
+DNT,87,2,0,,0,
+DNT,87,3,0,,0,
+DNT,87,4,0,,1,healing wound on interdigitial skin RF
+DNT,87,5,0,,0,
+DNT,87,6,0,,0,
+DNT,87,7,0,,0,
+DNT,87,8,0,,0,
+DNT,87,9,0,,0,
+DNT,87,10,0,,0,
+DNT,88,1,1,"old lesion RHS dorsal tongue, 1x1cm",0,
+DNT,88,2,0,,0,
+DNT,88,3,0,,0,
+DNT,88,4,1,"old lesion RHS dorsal tongue, 2x1cm; LHS 1x0.5cm",0,
+DNT,88,5,1,"old lesion RHS dorsal tongue, 3x2cm",0,
+DNT,89,1,1,"old lesion LHS dorsal tongue, 1x1cm",0,
+DNT,89,2,0,,0,
+DNT,89,3,0,,0,
+DNT,89,4,0,,0,
+DNT,89,5,0,,0,
+DNT,89,6,0,,0,
+DNT,89,7,0,,0,
+DNT,89,8,0,,0,
+DNT,89,9,0,,0,
+DNT,89,10,0,,0,
+DBG,90,1,0,,0,
+DBG,90,2,0,,0,
+DBG,90,3,0,,0,
+DBG,90,4,0,,0,
+DBG,90,5,1,"old lesion RHS dorsal tongue, 2x2cm",0,
+DBG,90,6,0,,0,
+DBG,90,7,0,,0,
+DBG,90,8,0,,0,
+DBG,90,9,0,,0,
+DBG,90,10,0,,0,
+DBG,91,1,1,"old lesion dorsal tongue, 5x7cm",0,
+DBG,91,2,0,,0,
+DBG,91,3,1,"old lesion RHS dorsal tongue, 3x1cm",0,
+DBG,91,4,1,old lesion type but multiple small dotted erosions on dorsal tongue,0,
+DBG,91,5,0,,0,
+DBG,91,6,1,"old wound dorsal tongue, 2x0.5cm, like a healing cut",0,
+DBG,91,7,0,,0,
+DBG,91,8,0,,0,
+DBG,91,9,0,,0,
+DBG,91,10,0,,0,
+DBG,92,1,1,"small old lesion RHS dorsal tongue, 0.5x0.5cm",0,
+DBG,92,2,0,,0,
+DBG,92,3,0,,0,
+DBG,92,4,1,dorsal surface of tongue generally pitted and roughened,0,
+DBG,92,5,1,"old lesion RHS dorsal tongue, 1x1cm",0,
+MBA,94,1,0,,0,
+MBA,94,2,0,,1,rough interditial skin on all 4 feet
+MBA,94,3,1,"old lesion RHS dorsal tongue, 2x1cm",1,rough interditial skin on all 4 feet
+MBA,94,4,1,old lesion 4x3cm on dorsal tongue and 1.5x1cm LHS dorsal tongue,1,rough interditial skin on all 4 feet
+MBA,94,5,0,,0,
+MBA,94,6,1,old lesion LHS dorsal tongue 1.5x1.5cm,0,
+MBA,94,7,0,,0,
+MBA,94,8,0,,0,
+MBA,94,9,1,"old lesion dorsal tongue, 0.5x0.5cm",1,granulating wound RF; healed wound LF
+MBA,94,10,0,,0,
+MBA,95,1,0,,0,
+MBA,95,2,0,,0,
+MBA,95,3,0,,0,
+MBA,95,4,0,,0,
+MBA,95,5,0,,1,healed interdigital wound RH
+MBA,95,6,0,,0,
+MBA,95,7,0,,0,
+MBD,96,1,0,,0,
+MBD,96,2,1,"old lesion LHS dorsal tongue, 2x2cm",0,
+MBD,96,3,0,,0,
+MBD,96,4,0,,0,
+MBD,97,1,0,,0,
+MBD,97,2,0,,0,
+MBD,97,3,0,,0,
+MBD,97,4,0,,0,
+MBD,97,5,0,,0,
+MBD,97,6,0,,1,thicken interigital skin on all 4 feet
+MBD,97,7,0,,0,
+MBD,97,8,0,,0,
+MBD,97,9,0,,0,
+MBD,97,10,0,,0,
+MKI,98,1,1,"old lesion dorsal tongue, 2.5x0.5cm",1,interdigital skin thickened all 4 feet; both hind feet open lesions on bulb of heel
+MKI,98,2,0,,0,
+MKI,98,3,0,,1,thickened interdigital skin all 4 feet (comment couldnt read)
+MKI,98,4,0,,1,rough interdigital skin all 4 feet
+MKI,98,5,1,"old lesion lHS dorsal tongue, 1x0.5cm",1,break in the growth of the hoof and underrun horn on bulbs of heels all 4 feet
+MKI,98,6,0,,1,break in growth of hooves all 4 feet
+MKI,99,1,0,,0,
+MKI,99,2,0,,0,
+MKI,99,3,0,,0,
+MKI,99,4,0,,1,slightly 'puffy'/edematous interdigital skin both fore feet
+MKI,99,5,1,"small spotted lesion dorsal tongue, old lesion dorsal tongue, 1.5x1cm",0,
+MKI,99,6,0,,1,slightly edematous skin all 4 feet
+MKI,99,7,1,old lesion dorsal tongue 3x2cm,0,
+DNL,100,1,0,,1,LH thickened interdigital skin
+DNL,100,2,0,,0,
+DNL,100,3,1,"cresent shaped cut on dorsal tongue, 3cm long",0,
+DNL,100,4,0,,1,roughened interdigital skin on all 4 feet
+DNL,100,5,0,,1,roughened interdigital skin on all 4 feet
+DNL,100,6,1,"cresent shaped cut on dorsal tongue, 3 cm long",1,rough interdigital skin both hind feet
+DNL,100,7,1,"RHS dorsal tongue old lesion, 0.5x0.5cm",0,
+DNL,100,8,1,"cresent shaped cut dorsal tongue, 2.5cm long",1,roughened interdigital skin on both hind feet
+DNT,101,1,0,,0,
+DNT,101,2,1,"old lesion dorsal tongue RHS, 1x1.5cm; LHS, 1x00.5cm",0,
+DNT,101,3,1,"old lesion LHS dorsal tongue, 3x1cm",1,rougened interdigital skin on both fore feet
+DNT,101,4,0,,0,
+DNT,101,5,0,,0,
+DNT,101,6,1,"old lesion dorsal tongue, 1.5x1.5cm",0,
+DNT,101,7,0,,0,
+DNT,101,8,0,,0,
+DNT,101,9,0,,0,
+DNT,101,10,0,,0,
+DNT,102,1,0,,0,
+DNT,102,2,1,"old lesion dorsal tongue, 4x3cm",1,rough interdigital skin on all 4 feet
+DNT,102,3,1,"old lesion dorsal tongue, 1x2cm",0,
+DNT,102,4,0,,1,interdigital skin 'puffy'/edematous all 4 feet
+DNT,102,5,0,,0,
+DNT,102,6,0,,0,
+DNT,102,7,0,,0,
+DNT,102,8,0,,0,
+DNT,102,9,0,,0,
+DNT,102,10,0,,0,
+VNG,103,1,0,,1,interdigital skin swollen/'puffy' on all 4 feet
+VNG,103,2,1,"old lesion LHS dorsal tongue, 1x1cm",0,
+VNG,103,3,0,,1,rough interdigital skin on all 4 feet
+VNG,103,4,0,,1,swollen/'puffy' interdigital skin on all 4 feet
+VNG,103,5,0,,0,
+VNG,103,6,0,,0,
+VNG,103,7,1,"old lesion dorsal tongue, 1x1cm",0,
+VNG,103,9,0,,0,
+VNG,103,10,0,,0,
+VNG,104,1,0,,1,puffy/edematous interdigital skin on all 4 feet
+VNG,104,2,0,,0,
+VNG,104,3,0,,0,
+VNG,104,4,0,,0,
+VNG,104,5,1,"old lesion dorsal tongue, 2.5x2.5cm",0,
+DTI,105,1,1,"old lesions both sides of dorsal tongue, 2x1cm",1,break in the growth of hooves all 4 feet
+DTI,105,2,0,,0,
+DTI,105,3,1,"old lesion RHS dorsal tongue, 0.5x0.5cm",0,
+DTI,105,4,0,,0,
+DTI,105,5,0,,0,cut in RF hoof
+DTI,105,6,0,,0,
+DTI,105,7,1,"old lesion dorsal tongue, 2xqcm",0,
+DTI,105,8,1,"old lesion dorsal tongue RHS, 0.5x0.5cm",1,break in the growth of the hooves all 4 feet
+DTI,105,9,1,"old lesion dorsal tongue both sides, 1.5x1.5cm",0,
+DTI,105,10,0,,1,break in the growth of the hooves all 4 feet
+DTI,106,4,0,,1,"break in the growth of the hooves all 4 feet, rough interdigital skin on 2 hind feet"
+DTI,106,5,0,,1,thickened and roughened interdigital skin all 4 feet
+DTI,106,7,0,,0,
+DTI,106,8,0,,0,
+DTI,106,9,1,"old lesion dorsal tongue LHS, 1.5x1.5cm",1,break in growth of hooves all 4 feet
+DTI,106,10,0,,1,break in growth of hooves all 4 feet
+DTI,106,1,0,,1,break in the growth of the hooves all 4 feet
+DTI,106,2,0,,1,break in the growth of the hooves all 4 feet
+DTI,106,3,1,"old lesion dorsal tongue RHS, 2x3cm; tip, 2x1.5cm",1,"break in the growth of the hooves all 4 feet, rough interdigital skin on 2 hind feet"
+DTI,107,1,0,,0,
+DTI,107,2,1,"old lesion dorsal tongue, 4x1cm",0,
+DTI,107,3,0,,1,break in the growth of the hooves all 4 feet; roughened interdigital skin on all 4 feet
+DTI,107,4,0,,1,break in the growth of the hooves all 4 feet
+DTI,107,5,0,,1,break in the growth of the hooves all 4 feet
+DTI,107,6,0,,0,
+DTI,107,7,0,,1,break in the growth of the hooves all 4 feet; rough interdigital skin all 4 feet
+DTI,108,1,0,,0,
+DTI,108,2,0,,0,
+DTI,108,3,0,,0,
+DTI,108,4,0,,0,
+DTI,108,5,0,,0,
+DTI,108,6,0,,1,puffy/edematous interdigital skin both fore feet
+DTI,108,7,0,,0,
+DTI,108,8,0,,0,
+DTI,108,9,0,,0,
+DTI,108,10,0,,0,
+DTI,109,1,0,,0,
+DTI,109,2,0,,1,rough interdigital skin on all 4 feet
+DTI,109,3,0,,1,large cut in hoof of RF
+DTI,109,4,0,,1,rough interdigital skin on all 4 feet
+DTI,109,5,0,,0,
+DTI,109,6,0,,0,
+DTI,109,8,0,,0,
+DTI,109,9,0,,0,
+DTI,109,10,0,,0,
+DMA,110,1,0,,0,
+DMA,110,2,0,,0,
+DMA,110,3,0,,0,
+DMA,110,4,0,,0,
+DMA,110,5,0,,0,
+DMA,110,6,0,,0,
+DMA,110,7,0,,0,
+DMA,110,8,1,"small lesion dosal tongue, lhs 0.5x0.5cm; rhs 0.5x0.5cm",0,
+DMA,110,9,0,,0,
+DMA,110,10,0,,1,rough interdigital skin on all 4 feet
+DMA,111,1,0,,0,
+DMA,111,2,0,,0,
+DMA,111,3,0,,0,
+DMA,111,4,0,,0,
+DMA,111,5,0,,0,
+DMA,111,6,0,,0,
+DMA,111,7,0,,0,
+DMA,112,1,0,,0,
+DMA,112,2,0,,0,
+DMA,112,3,0,,0,
+DMA,112,4,0,,0,
+DMA,112,6,0,,0,
+DMA,112,7,0,,0,
+DMA,113,1,1,old lesion LHS dorsal tongue 2x2cm,0,
+DMA,113,2,0,,0,
+DMA,113,3,0,,0,
+DMA,113,4,0,,0,
+DMA,113,5,0,,0,
+DMA,113,6,1,"old lesion dorsal tongue, 2.5x2.5cm",1,thickened rough interdigital skin on all 4 feet
+DMA,114,1,0,,1,thickened rough interdigital skin on all 4 feet
+DMA,114,2,0,,1,rough interdigital skin on LF
+DMA,114,3,0,,0,
+DMA,114,4,0,,0,
+DMA,114,5,0,,0,
+DMA,114,6,0,,0,
+DMA,114,7,0,,0,
+DMA,114,8,0,,0,
+DMA,115,1,0,,1,wound interdigital space RF
+DMA,115,2,0,,0,
+DMA,115,3,0,,0,
+DMA,115,4,0,,0,
+DMA,115,5,0,,0,
+DMA,115,6,0,,0,
+DMA,115,7,0,,0,
+DAM,116,1,0,,0,
+DAM,116,2,0,,0,
+DAM,116,3,0,,0,
+DAM,116,4,0,,0,
+DAM,116,5,0,,0,
+DAM,116,6,0,,0,
+DAM,116,7,0,,0,
+DAM,116,8,0,,0,
+DAM,116,9,0,,0,
+DAM,116,10,0,,0,
+DAM,117,1,1,"old lesion dorsal tongue, 3x3cm",0,
+DAM,117,2,0,,0,
+DAM,117,3,0,,0,
+DAM,117,4,0,,0,
+DAM,117,5,0,,0,
+DAM,117,6,0,,0,
+DAM,117,7,0,,0,
+DAM,117,8,0,,0,
+DAM,117,9,0,,0,
+DAM,117,10,0,,0,
+DDE,119,1,0,,0,
+DDE,119,2,0,,0,
+DDE,119,3,0,,0,
+DDE,119,4,0,,0,
+DDE,119,5,0,,0,
+DDE,120,1,1,"old lesion LHS dorsal tongue, 2x1cm",0,
+DDE,120,2,0,,1,rough interdigital skin on 2 fore feet
+DDE,120,3,0,,1,rough interdigital skin on all 4 feet
+DDE,120,4,0,,1,rough interdigital skin on all 4 feet
+DDE,120,5,0,,0,
+DDE,120,6,0,,0,
+DDE,120,7,0,,0,
+DDE,120,8,0,,0,
+DDE,120,9,0,,0,
+DDE,120,10,0,,0,
+DDE,121,1,1,"old lesion RHS dorsal tongue, 2x3.5cm, LHS, 1x1cm",0,
+DDE,121,2,0,,0,
+DDE,121,3,0,,0,
+DDE,121,4,0,,0,
+DDE,121,5,0,,0,
+DDE,121,6,1,"small wound dorsal tongue, 0.5x0.5cm",0,
+DDE,121,7,0,,0,
+DDE,121,8,0,,0,
+DDE,121,9,0,,0,
+DDE,121,10,0,,0,
+VNA,123,1,0,,0,
+VNA,123,3,1,"old lesion LHS dorsal tongue, 5x3cm",1,rough interdigital skin on all 4 feet
+VNA,123,4,1,"old lesion dorsal tongue, 1x1cm",0,
+VNA,123,5,0,,1,roughened interdigital skin on all 4 feet
+VNA,123,6,0,,0,
+VNA,123,7,1,"old lesion RHS, 3x1.5cm; LHS 3x2cm",0,
+VNA,123,8,0,,0,
+VNA,123,9,1,"old lesions dorsal tongue, RHS 1x1cm, 2.5x1.5cm and 1.5x1cm LHS",0,
+VNA,123,10,0,,0,
+VNA,124,1,0,,1,roughened interdigital skin all 4 feet
+VNA,124,2,0,,1,puffy and rough interdigital skin all 4 feet
+VNA,124,3,0,,0,
+VNA,124,4,0,,1,rough interdigital skin all 4 feet
+VNA,124,5,1,"old lesion LHS dorsal tongue, 1.5x1cm",0,
+VNA,124,6,1,"old lesion LHS dorsal tongue, 1x1cm",0,
+VNA,124,7,0,,0,
+VNA,124,8,0,,0,
+VNA,124,10,1,"old lesion tip dorsal tongue, 0.5x0.5cm",0,
+VNE,125,1,0,,0,
+VNE,125,2,0,,0,
+VNE,125,3,0,,0,
+VNE,125,4,0,,0,
+VNE,125,5,0,,0,
+VNE,125,6,0,,0,
+VNE,125,7,0,,0,
+VNE,125,8,1,"old lesion LHS dorsal tongue, 0.5x0.5cm",0,
+VNE,125,9,0,,0,
+VNE,125,10,0,,0,
+VNE,126,1,0,,1,rough interdigital skin on both hind feet
+VNE,126,2,1,"old lesion dorsal tongue RHS, 2x2cm; dotted lesion on dorsal tongue LHS",1,rough interdigital skin on all 4 feet
+VNE,126,3,0,,0,
+VNE,126,4,0,,0,
+VNE,126,5,1,"old lesion RHS dorsal tongue, 2x0.5cm",0,
+VNE,126,6,0,,1,slightly thickened and roughened interdigital skin all 4 feet
+VNE,126,7,1,"old lesion RHS dorsal tongue, 2x2cm",0,
+VNE,126,8,1,"old lesion RHS dorsal tongue, 0.5x0.5cm",0,
+VNE,126,9,1,"old lesion RHS dorsal tongue, 1x1cm and 1x1cm",1,thickened/puffy interdigital skin on all 4 feet
+VNE,126,10,0,,0,
+VNE,127,1,0,,0,
+VNE,127,2,0,,1,break in the growth of the hooves of LF and LH
+VNE,127,3,0,,0,
+VNE,127,4,0,,1,break in the growth of hooves all 4 feet. Interdigital skin also puffy all 4 feet
+VNE,127,5,0,,1,break in growth of hooves all 4 feet
+VNE,127,6,0,,1,break in growth of hooves all 4 feet
+VNE,127,7,0,,1,break in growth of hooves all 4 feet
+VNE,127,8,0,,0,
+VNE,127,9,1,old lesion dorsal tongue 4x2cm,1,break in growth of hooves all 4 feet. Puffy interdigital skin all 4 feet
+VNE,127,10,0,,1,break in growth of hooves all 4 feet. Slightly 'Puffy' interdigital skin all 4 feet
+VBM,128,1,1,"old lesion RHS dorsal tongue, 3x2cm; 2x2cm",1,rough interdigital skin on all 4 feet
+VBM,128,2,0,,0,
+VBM,128,3,1,"old lesion LHS dorsal tongue, 0.5x0.5cm",0,
+VBM,128,4,0,,0,
+VBM,128,5,1,"old lesion LHS dorsal tongue, 3x3cm",0,
+VBM,128,6,0,,1,slightly puffy interdigital skin all 4 feet
+VBM,128,7,0,,0,
+VBM,128,8,0,,0,
+VBM,128,9,0,,0,
+VBM,128,10,1,"old lesion, LHS dorsal tongue, 1x1cm; LHS tip of tongue, 1x1cm",0,
+VBM,129,1,0,,1,break in the growth of hooves on 2 hind feet
+VBM,129,2,1,crescent shaped cut dorsal tongue at base of dorsum,1,rough interdigital skin all 4 feet
+VBM,129,3,1,"old lesion RHS dorsal tongue, 1x0.5cm",0,
+VBM,129,4,1,dotted lesions dorsal tongue; old lesion RHS dorsal tongue 1.5x1.5cm,0,
+VBM,129,5,0,,1,break in the growth of hooves all 4 feet
+VBM,129,6,1,"old lesion dorsal tongue RHS, 1x1cm",1,break in the growth of hooves all 4 feet
+VBM,129,7,0,,0,
+VBM,129,8,0,,1,slightly puffy interdigital skin on all 4 feet
+VBM,129,9,0,,1,break in the growth of hooves on all 4 feet
+VBM,129,10,0,,0,
+VGH,130,7,0,,1,break in the growth of hooves all 4 feet
+VGH,130,8,0,,1,break in the growth of hooves all 4 feet
+VGH,130,9,1,"old lesion RHS dorsal tongue, 1x1cm and 1x1cm; LHS 1x1.5cm",1,break in the growth of hooves all 4 feet
+VGH,130,10,0,,0,
+VGH,130,1,0,,0,
+VGH,130,2,0,,1,break in the growth of hooves all 4 feet
+VGH,130,3,1,"old lesion LHS dorsal tongue, 2x1cm",1,break in the growth of hooves all 4 feet
+VGH,130,4,0,,1,break in the growth of hooves all 4 feet
+VGH,130,5,0,,1,break in the growth of hooves all 4 feet
+VGH,130,6,0,,1,break in the growth of hooves and thickened interdigital skin all 4 feet
+VGH,131,1,0,,0,
+VGH,131,2,0,,0,
+VGH,131,3,1,"old lesion RHS dorsal tongue, 1.5x1.5cm",0,
+VGH,131,4,1,"old lesion RHS dorsal tongue, 0.5x0.5cm",0,
+VGH,131,5,1,"old lesion LHS dorsal tongue, 1.5x1cm",1,break in the growth of hooves all 4 feet
+VGH,131,6,0,,0,
+VGH,131,7,0,,0,
+VGH,131,8,1,"old lesion RHS dorsal tongue, 2x1cm",0,
+VGH,131,9,0,,0,
+VGH,131,10,0,,0,
+VGH,132,1,1,"Old lesion dorsal tongue, RHS 1x1cm; LHS 1x1cm",0,
+VGH,132,2,0,,0,
+VGH,132,3,0,,1,break in growth of hooves all 4 feet
+VGH,132,4,0,,1,break in growth of hooves all 4 feet
+VGH,132,5,0,,1,break in growth of hooves all 4 feet
+VGH,132,6,1,"old lesion dorsal tongue LHS, 2x2cm",0,
+VGH,132,7,0,,1,puffy interdigital skin all 4 feet
+VGH,132,8,0,,0,
+VGH,132,9,1,"old lesion dorsal tongue RHS, 1x2.5cm",0,
+VGH,132,10,0,,1,puffy interdigital skin and break in growth of hooves all 4 feet
+VGH,133,1,0,,0,
+VGH,133,2,0,,0,
+VGH,133,3,0,,1,break in growth of hooves all 4 feet
+VGH,133,4,1,"old lesion RHS dorsal tongue, 1x1cm",1,break in growth of hooves all 4 feet
+VGH,133,5,0,,0,
+VGH,133,6,0,,0,
+VGH,133,7,1,"old lesion dorsal tongue RHS, 2x1cm",1,rough interdigital skin 2 hind feet
+VGH,133,8,0,,0,
+VGH,133,9,0,,0,
+VGH,133,10,1,"old lesion dorsal tongue, 2x5cm",0,
+VGH,134,1,1,"old lesion dorsal tongue, 1x2cm",1,break in growth of hooves all 4 feet
+VGH,134,2,0,,0,
+VGH,134,3,0,,0,
+VGH,134,4,0,,0,
+VGH,134,5,0,,0,
+VGH,134,6,0,,0,
+VGH,134,7,0,,1,slightly puffy interdigital skin all 4 feet
+VGH,134,8,0,,1,slightly puffy interdigital skin all 4 feet
+VGH,134,9,0,,0,
+VNA,135,1,0,,0,
+VNA,135,2,0,,1,break in growth of hooves 2 hind
+VNA,135,3,0,,1,break in growth of hooves all 4 feet
+VNA,135,4,0,,0,
+VNA,135,5,0,,1,break in growth of hooves all 4 feet
+VNA,135,6,0,,1,break in growth of hooves and puffy interdigital skin all 4 feet
+VNA,135,7,0,,1,break in growth of hooves 4 feet
+VNA,135,8,0,,1,break in growth of hooves 4 feet
+VNA,135,9,0,,1,break in growth of hooves 4 feet
+MDR,136,1,0,,1,puffy interdigital skin all 4 feet
+MDR,136,2,0,,1,puffy interdigital skin all 4 feet
+MDR,136,3,0,,1,rough interdigital skin on 2 hind feet
+MDR,136,4,1,"old elsion on LHSS dorsal tongue, 2x1cm",1,puffy interdigital skin all 4 feet
+MDR,136,5,0,,0,
+MDR,136,6,0,,0,
+MDR,136,7,0,,1,puffy interdigital skin all 4 feet
+MDR,136,8,0,,0,
+MDR,136,9,0,,0,
+MDR,137,1,0,,0,
+MDR,137,2,0,,0,
+MDR,137,3,0,,1,puffy interdigital skin all 4 feet
+MDR,137,4,1,"old lesion dorsal tongue, 5x3cm",1,rough interdigital skin all 4 feet
+MDR,137,5,0,,0,
+MDR,137,6,0,,0,
+MDR,137,7,1,"old lesion dorsal tongue LHS 2x2cm; RHS, 2x2cm; base of dorsum 4x2cm",0,
+MDR,137,8,0,,1,break in the growth of the hoof LF only
+MDR,137,9,1,"old lesion dorsal tongue LHS, 0.50.5cm",1,coronary band very pronounced and white
+MDR,137,10,1,"old lesion dorsal tongue, LHS, 2x2cm; RHS 1x1cm; RHS, 1.5x0.5cm",1,rough interdigital skin all 4 feet
+MBA,138,1,1,"OLD LESION lhs DORSAL TONGUE, 2.5X1CM",1,break in the growth of hooves and rough interdigital skin all 4 feet
+MBA,138,2,0,,1,break in the growth of the hooves
+MBA,138,3,0,,0,
+MBA,138,4,1,"old lesion dorsal tongue, RHS 3x3cm; RHS dorsum 3x2cm",1,rough interdigital skin all 4 feet
+MBA,138,5,0,,1,break in the growth of the hooves and rough interdigital skin all 4 feet
+MBA,138,6,0,,1,rough interdigital skin all 4 feet
+MBA,138,7,0,,0,
+MBA,138,8,0,,0,
+MBA,138,9,1,old lesion ? Size dorsal tongue,0,
+MBA,138,10,1,"old lesion dorsal tongue, LHS, 1.5x1cm",0,
+VBM,139,1,0,,1,granulating lesions interdigital skin 2 fore feet
+VBM,139,2,0,,0,
+VBM,139,3,0,,0,
+VBM,139,4,0,,1,puffy interdigital skin all 4 feet
+VBM,139,5,1,"old lesion dorsal tongue, RHS, 1.5x0.5cm",1,puffy interdigital skin all 4 feet
+VBM,139,6,0,,0,
+VBM,139,7,0,,0,
+VBM,139,8,0,,0,
+VBM,139,9,0,,0,
+VBM,139,10,0,,1,puffy interdigital skin all 4 feet
+VBM,140,1,1,old lesion RS 1.5x1cm,0,
+VBM,140,2,0,,0,
+VBM,140,3,0,,1,puffy interdigital skin 2 hind feet
+VBM,140,4,0,,0,
+VBM,140,5,0,,1,break in the growth of the hooves all 4 feet
+VBM,140,6,0,,1,puffy interdigital skin 2 fore feet
+VBM,140,7,0,,0,
+VBM,140,8,0,,0,
+VBM,140,9,0,,0,
+VBM,140,10,0,,0,
+VMB,141,1,1,"old lesion dorsal tongue 2x2cm, RHS dorsum, 1x1cm",1,break in the growth of hooves all 4 feet
+VMB,141,2,1,"old lesion dorsal tongue RHS, 2x2cm",1,break in the growth of hooves all 4 feet
+VMB,141,3,0,,1,thick interdigital skin on 2 hind feet and break in growth of hooves on all 4 feet
+VMB,141,4,0,,0,
+VMB,141,5,0,,0,
+VMB,141,6,0,,0,
+VMB,141,7,0,,0,
+VMB,141,8,0,,1,rough interdigital skin on all 4 feet
+VMB,141,9,1,crescent cut anterior to dorsum on tongue 2cm long,1,break in growth of hooves on 2 fore feet
+VMB,141,10,1,"old leison RHS, 0.5x0.5cm; LHS, 0.5x0.5cm",1,break in growth of hooves on all 4 feet
+VMU,142,1,1,"old lesion LhS dorsal tongue, 2x1cm",0,
+VMU,142,2,0,,0,
+VMU,142,3,0,,0,
+VMU,142,4,0,,0,
+VMU,142,5,0,,0,
+VMU,142,6,0,,0,
+VMU,142,7,0,,0,
+VMU,142,8,0,,0,
+VMU,142,9,0,,0,
+VMU,142,10,0,,0,
+VMU,143,1,0,,1,small wound between hooves RH
+VMU,143,2,0,,1,break in growth of hooves all 4 feet
+VMU,143,3,0,,0,
+VMU,143,4,0,,0,
+VMU,143,5,0,,1,break in the growth of hooves 2 hind feet
+VMU,143,6,0,,0,
+VMU,143,7,0,,1,break in the growth of the hooves all 4 feet
+VMU,143,8,0,,0,
+VMU,143,9,0,,0,
+VMU,143,10,0,,0,
+VMU,144,1,0,,0,
+VMU,144,2,0,,0,
+VMU,144,3,0,,0,
+VMU,144,4,0,,0,
+VMU,144,5,0,,0,
+VMU,144,6,0,,0,
+VMU,144,7,0,,0,
+VMU,144,8,0,,0,
+VMU,144,9,0,,0,
+VMU,144,10,0,,0,
+VMU,145,1,0,,0,
+VMU,145,2,0,,1,rough interdigital skin all 4 feet
+VMU,145,3,0,,0,
+VMU,145,4,0,,0,
+VMU,145,5,0,,0,
+VMU,145,6,0,,0,
+VMU,145,7,0,,0,
+VMU,145,8,0,,1,healing wound interdigital area LH
+VMU,145,9,0,,0,
+VMU,145,10,0,,0,
+VMU,146,1,0,,1,thick roughened interdigital skin on RF foot
+VMU,146,2,0,,0,
+VMU,146,3,0,,0,
+VMU,146,4,0,,0,
+VMU,146,5,0,,0,
+VMU,146,6,0,,0,
+VMU,146,7,0,,0,
+VMU,146,8,0,,0,
+VMU,146,9,0,,0,
+VMU,146,10,0,,0,
+VMU,147,1,0,,0,
+VMU,147,2,1,"old lesion dorsal tongue, 1x1cm",0,
+VMU,147,3,0,,0,
+VMU,147,4,0,,0,
+VMU,147,5,1,"old lesion base of tongue, 5x3cm",0,
+VMU,147,6,0,,0,
+VMU,147,7,0,,0,
+VMU,147,8,0,,0,
+VMU,147,9,0,,0,
+VMU,147,10,0,,0,
+VMM,148,1,0,,0,
+VMM,148,2,0,,0,
+VMM,148,3,1,"old lesion dorsal tongue, 2x1cm",0,
+VMM,148,4,0,,0,
+VMM,148,5,0,,0,
+VMM,148,6,0,,0,
+VMM,148,7,0,,0,
+VMM,148,8,0,,0,
+VMM,148,9,0,,0,
+VMM,148,10,0,,0,
+VGH,149,1,0,,1,break in the growth of hooves 2 hind feet
+VGH,149,2,0,,1,break in the growth of hooves all 4 feet
+VGH,149,3,0,,0,
+VGH,149,4,0,,1,slightly puffy interdigital skin all 4 feet
+VGH,149,5,0,,1,break in growth of hooves all 4 feet
+VGH,149,6,0,,0,
+VGH,149,7,0,,0,
+VMB,150,1,1,crescent shaped cut on dorsal tongue 3cm long,1,break in the growth of hooves and slightly puffy interdigital skin all 4 feet
+VMB,150,2,1,"old lesion dorsal tongue RHS, 0.5x0.5cm",1,break in the growth of hooves all 4 feet
+VMB,150,3,0,,0,
+VMB,150,4,0,,1,break in the growth of hooves and puffy interdigital skin all 4 feet
+VMB,150,5,0,,1,break in the growth of hooves and puffy interdigital skin all 4 feet
+VMB,150,6,1,"wound 1.5cm long dental pad; old lesion dorsal tongue, o.5x0.5cm",1,break in the growth of hooves and puffy interdigital skin all 4 feet
+VMB,150,7,0,,1,break in the growth of hooves and puffy interdigital skin all 4 feet
+VMB,150,8,1,"old lesion dorsal tongue, 0.5x0.5cm",1,break in the growth of hooves and puffy interdigital skin all 4 feet
+VMB,150,9,0,,1,break in the growth of the hooves and coronary band very pronounced all 4 feet
+VMB,150,10,0,,1,break in the growth of hooves and puffy interdigital skin all 4 feet
+VMB,151,1,0,,0,
+VMB,151,2,1,"healing cut on dental pad, 1.5cm long",1,granulating interdigital lesion on all 4 feet
+VMB,151,3,0,,0,
+VMB,151,4,0,,0,
+VMB,151,5,0,,1,break in the growth of hooves all 4 feet
+VMB,151,6,0,,1,puffy interdigital skin all 4 feet
+VMB,151,7,0,,1,break in the growth of he hooves all 4 feet
+VMB,151,8,1,"old lesion RHS dorsal tongue, 1x1cm",1,granulating lesion interdigital skin LH; re-epithelisied interdigital skin 2 fore feet
+VMB,151,9,1,"old lesion dorsal tongue, 0.5x0.5cm",1,thickened interdigital skin RH; granulating interdigital lesions 2 fore feet
+VMB,151,10,0,,0,
+VBM,152,1,0,,0,
+VBM,152,2,1,"old lesion RHS dorsal tongue, 0.5x0.5cm",0,
+VBM,152,3,0,,1,break in the growth of the hooves all 4 feet
+VBM,152,4,0,,1,slightly puffy interdigital skin all 4 feet
+VBM,152,5,0,,0,
+VBM,152,6,0,,0,
+VBM,152,7,0,,0,
+VBM,152,8,0,,1,break in the growth of the hooves all 4 feet
+VBM,152,9,0,,1,break in the growth of the hooves all 4 feet
+VBM,152,10,0,,0,
+VBM,153,1,1,"crescent shaped cut base of tongue 1.5cm long; old lesion dorsal tongue, 2x1.5cm",1,break in growth of the hooves all 4 feet
+VBM,153,2,0,,0,
+VBM,153,3,0,,1,break in the growth of the hooves all 4 feet
+VBM,153,4,1,"old lesion dorsal tongue LHS, 2x2cm; LHS, 1.5x1.5cm",1,break in the growth of the hooves all 4 feet
+VBM,153,5,0,,1,break in the growth of the hooves all 4 feet
+VBM,153,6,0,,0,
+VBM,153,7,1,"old lesion tip of dorsal tongue, 0.5x0.5cm",1,break in the growth of the hooves all 4 feet
+VBM,153,8,1,"old lesion dorsal tongue, RHS, 1.5x1.5cm",1,break in the growth of the hooves all 4 feet
+VBM,153,9,0,,1,break in the growth of the hooves all 4 feet
+VBM,153,10,1,"old lesion dorsal tongue, LHS, 0.5x0.5cm",0,
