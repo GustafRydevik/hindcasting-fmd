@@ -27,31 +27,77 @@ traceplot(resStan, pars = c("beta"), inc_warmup = TRUE)
 
 herd_monlast<-unique(bronsvoort_training_data_clean[c("hcode","monlast")])
 
-dat <- list(N        = nrow(bronsvoort_training_data_clean),
-            p        = 6,
-            probang    = bronsvoort_training_data_clean$Probang,
-            age      = bronsvoort_training_data_clean$age,
-            vnt     = bronsvoort_training_data_clean$VNTAny,
-            hcode=bronsvoort_training_data_clean$hcode,
-            H=nrow(herd_monlast),
-            herd=herd_monlast$hcode,
-            monlast     = herd_monlast$monlast
-            )
 
+###Splitting up the data into prediction and estimation
 set.seed(1337)
-pred.ndx<-sample(1:nrow(bronsvoort_training_data_clean),300)
-est.ndx<-setdiff(1:nrow(bronsvoort_training_data_clean,pred.ndx)
-                 
-dat <- list(Ne        = length(est.ndx),
-            Np        =length(pred.ndx),
-            p        = 6,
-            pred.ndx=pred.ndx,
-            est.ndx=est.ndx,
-            probang    = bronsvoort_training_data_clean$Probang,
-            age      = bronsvoort_training_data_clean$age,
-            vnt     = bronsvoort_training_data_clean$VNTAny,
-            hcode=bronsvoort_training_data_clean$hcode,
-            H=nrow(herd_monlast),
-            herd=herd_monlast$hcode,
-            monlast     = herd_monlast$monlast
+herd_pred<-sort(sample(herd_monlast$hcode,15))
+herd_est<-sort(setdiff(herd_monlast$hcode,pred.herd))
+
+            
+probang_df_est<-subset(bronsvoort_training_data_clean,hcode%in%herd_est)
+herd_df_est<-subset(herd_monlast,hcode%in%herd_est)
+herd_df_est$hcode_stan_est<-1:nrow(herd_df_est)
+probang_df_est<-left_join(probang_df_est,herd_df_est,by="hcode")
+
+
+probang_df_pred<-subset(bronsvoort_training_data_clean,hcode%in%herd_pred)
+herd_df_pred<-subset(herd_monlast,hcode%in%herd_pred)
+herd_df_pred$hcode_stan_pred<-1:nrow(herd_df_pred)
+probang_df_pred<-left_join(probang_df_pred,herd_df_pred,by="hcode")
+
+
+
+###Creating predictive and estimating data lists
+with(probang_df_est,
+     dat_est <<- list(
+       probang = Probang,
+       age      = age,
+       vnt     = VNTAny,
+       hcode = hcode_stan_est
+     ))
+
+names(dat_est)<-paste(names(dat_est),"_est",sep="")
+
+
+herd_list_est<-list(
+  He=nrow(herd_df_est),
+  herd_est=herd_df_est$hcode_stan_est,
+  monlast_est     = herd_df_est$monlast
 )
+
+
+
+dat_est<-c(dat_est,
+           herd_list_est,
+           list(Ne=nrow(probang_df_est)))
+
+with(
+  probang_df_pred,
+  dat_pred <<- list(
+    probang    = Probang,
+    age      = age,
+    vnt     = VNTAny,
+    hcode = hcode_stan_pred
+  )
+)
+
+names(dat_pred)<-paste(names(dat_pred),"_pred",sep="")
+
+herd_list_pred<-list(
+  Hp=nrow(herd_df_pred),
+  herd_pred=herd_df_pred$hcode_stan_pred
+)
+
+
+dat_pred<-c(dat_pred,
+           herd_list_pred,
+           list(Np=nrow(probang_df_pred)))
+
+##Creating separate 
+dat_model<-c(dat_est,dat_pred,p=6)
+
+fileName <- file.path(code.path,"fmd-probangmod.stan")
+resStan <- stan(fileName, data = dat_model,
+                chains =5, iter = 10000, warmup = 5000, thin = 10)
+
+traceplot(resStan, pars = c("monlast_pred"), inc_warmup = TRUE)
