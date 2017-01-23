@@ -48,13 +48,20 @@ parameters {
 
 transformed parameters  {
   // Probability trasformation from linear predictor
-  real<lower=0> odds_est[Ne];
-  real<lower=0, upper=1> prob_est[Ne];
-   real<lower=0> odds_pred[Np];
-   real<lower=0> prob_pred[Np];
+  real<lower=0> probang_odds_est[Ne];
+  real<lower=0, upper=1> probang_prob_est[Ne];
+   real<lower=0> probang_odds_pred[Np];
+   real<lower=0> probang_prob_pred[Np];
+   
+     real<lower=0> vnt_odds_est[Ne];
+  real<lower=0, upper=1> vnt_prob_est[Ne];
+   real<lower=0> vnt_odds_pred[Np];
+   real<lower=0> vnt_prob_pred[Np];
+   
+   
   real sigma; 
-  real<lower=0> elisa_latent_est[Ne];
-  real<lower=0> elisa_latent_pred[Np];
+  real elisa_latent_est[Ne];
+  real elisa_latent_pred[Np];
   
   sigma <- 1 / sqrt(tau); 
   
@@ -79,17 +86,16 @@ transformed parameters  {
     for (i in 1:Np) {
       
       //probang
-    odds_pred[i] = exp(probang_lambda[1] +probang_lambda[2]*monlast_pred[hcode_pred[i]] +probang_lambda[3]*age_pred[i] + probang_lambda[4]*age_pred[i]*age_pred[i] +probang_lambda[5]*age_pred[i]*monlast_pred[hcode_pred[i]] + probang_lambda[6]*vnt_pred[i]);
-    prob_pred[i] = odds_pred[i] / (odds_pred[i] + 1);
+    probang_odds_pred[i] = exp(probang_lambda[1] +probang_lambda[2]*monlast_pred[hcode_pred[i]] +probang_lambda[3]*age_pred[i] + probang_lambda[4]*age_pred[i]*age_pred[i] +probang_lambda[5]*age_pred[i]*monlast_pred[hcode_pred[i]]);
+    probang_prob_pred[i] = probang_odds_pred[i] / (probang_odds_pred[i] + 1);
     
     
     //vnt
-        odds_pred[i] = exp(probang_lambda[1] +probang_lambda[2]*monlast_pred[hcode_pred[i]] +probang_lambda[3]*age_pred[i] + probang_lambda[4]*age_pred[i]*age_pred[i] +probang_lambda[5]*age_pred[i]*monlast_pred[hcode_pred[i]] + probang_lambda[6]*vnt_pred[i]);
-    prob_pred[i] = odds_pred[i] / (odds_pred[i] + 1);
+        vnt_odds_pred[i] = exp(probang_lambda[1] +probang_lambda[2]*monlast_pred[hcode_pred[i]] +probang_lambda[3]*age_pred[i] + probang_lambda[4]*age_pred[i]*age_pred[i] +probang_lambda[5]*age_pred[i]*monlast_pred[hcode_pred[i]]);
+    vnt_prob_pred[i] = vnt_odds_pred[i] / (vnt_odds_pred[i] + 1);
     
     
    //ELISA growth curve - shamelessly stolen from http://www.magesblog.com/2015/10/non-linear-growth-curves-with-stan.html
-    for (i in 1:Ne){
      elisa_latent_pred[i] <- elisa_lambda_one - elisa_lambda_two * pow(elisa_lambda_three, monlast_pred[hcode_pred[i]]);
  
   }

@@ -1,5 +1,5 @@
 library(rstan)
-library(dplyr)
+library(tidyverse)
 
 bronsvoort_training_data$Probang<-with(bronsvoort_training_data,(PbP.A+PbP.O+PbP.SAT2)>0)
 bronsvoort_training_data$VNTAny<-with(bronsvoort_training_data,(FMDS_A+FMDS_O+FMDS_SAT2)>0)
@@ -94,6 +94,8 @@ pairs(resStan,pars=c("beta","elisa_lambda_one","elisa_lambda_two","elisa_lambda_
 monlast_pred_stan<-summary(resStan,pars="monlast_pred")$summary
 ggplot(data.frame(monlast_pred_stan,monlast=herd_df_pred$monlast),aes(x=monlast,y=mean))+
   geom_errorbar(aes(ymin=X2.5.,ymax=X97.5.))+geom_point(col="red")+geom_abline(slope=1,intercept=0,col="blue")
+
+
 
 plot(herd_df_pred$monlast,monlast_pred_stan[,"mean"])
 points(herd_df_pred$monlast,monlast_pred_stan[,"2.5%"],col="red")
