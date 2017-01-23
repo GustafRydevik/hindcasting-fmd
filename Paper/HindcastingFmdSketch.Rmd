@@ -12,12 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = normalizePath('../'))
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
+## Hindcasting FMD incidence in Cameroon using surveillance data with multiple diagnostics 
 ```{r read_data}
 
 output.path<-"./output"
@@ -51,6 +46,10 @@ bronsvoort_training_data<-read.csv(file.path(textdata.path,"FMD-Gustaf-training.
 
 
 ```
+## Introduction
+
+
+This section describes an analysis of data collected on FMD prevalence in a dataset of 1500 cattle distributed across XX herds. The goal of the data collection was to get information on the time since last FMD incursion in a herd. Various aspects of the dataset has been described and analyzed in a number of publications [1,2,3,...]. Here, we will describe how the prevalence data can be transformed to provide information on disease incidence. 
 
 ## Data
 
