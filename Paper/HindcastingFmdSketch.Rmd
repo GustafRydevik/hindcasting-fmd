@@ -14,7 +14,7 @@ knitr::opts_knit$set(root.dir = normalizePath('../'))
 
 ## Hindcasting FMD incidence in Cameroon using surveillance data with multiple diagnostics 
 ```{r read_data}
-
+library(tidyverse)
 output.path<-"./output"
 code.path<-"./code"
 function.path<-"./code/functions"
@@ -123,16 +123,37 @@ Dekker (review!)
 People doing long-term experimental infection/post-disease follow up. Possibly Bergmann
 Pirbright does short, 1-month studies. 
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
 
 
 ## Section 1: using the cameroon data to estimate time since incursion. 
 
+```{r diagnostics, echo=FALSE}
+bronsvoort_training_data$Probang<-with(bronsvoort_training_data,(PbP.A+PbP.O+PbP.SAT2)>0)
+bronsvoort_training_data$VNTAny<-with(bronsvoort_training_data,(FMDS_A+FMDS_O+FMDS_SAT2)>0)
 
+bronsvoort_training_data%>%group_by(hcode)%>%summarise(prop_probang=mean(Probang,na.rm=T),monlast=mean(monlast))%>%
+  ggplot(aes(x=monlast,y=prop_probang))+geom_point()+geom_smooth()+xlab("months since incursion")->p_probang
+
+bronsvoort_training_data%>%group_by(hcode)%>%summarise(prop_vnt=mean(VNTAny,na.rm=T),monlast=mean(monlast))%>%
+  ggplot(aes(x=monlast,y=prop_vnt))+geom_point()+geom_smooth()+xlab("months since incursion")->p_vnt
+
+bronsvoort_training_data%>%group_by(hcode)%>%summarise(prop_foot=mean(FOOT_LESIO,na.rm=T),monlast=mean(monlast))%>%
+  ggplot(aes(x=monlast,y=prop_foot))+geom_point()+geom_smooth()+xlab("months since incursion")->p_lesion_foot
+
+bronsvoort_training_data%>%group_by(hcode)%>%summarise(prop_mouth=mean(MOUTH_LESI,na.rm=T),monlast=mean(monlast))%>%
+  ggplot(aes(x=monlast,y=prop_mouth))+geom_point()+geom_smooth()+xlab("months since incursion")->p_lesion_mouth
+
+
+bronsvoort_training_data%>%ggplot(aes(x=monlast))+geom_histogram()+xlab("months since incursion")->p_month_hist
+
+bronsvoort_training_data%>%
+  ggplot(aes(x=factor(monlast),y=FMD_cELISA))+geom_boxplot()+xlab("months since incursion")->p_elisa
+library(gridExtra)
+grid.arrange(p_month_hist,p_probang,p_vnt,p_lesion_foot,p_lesion_mouth,p_elisa,nrow=3,ncol=2)
+
+```
 A basic model, just using the cameroon data itself, would likely look something like the following:
 
 

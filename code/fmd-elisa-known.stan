@@ -54,14 +54,15 @@ transformed parameters  {
        
     //elisa 
     
-    elisa_latent_est[i] <- elisa_lambda_one/(1 + exp((elisa_lambda_two - monlast_est[hcode_est[i]])/elisa_lambda_three));
+    elisa_latent_est[i] <- elisa_lambda_one/(1+exp((elisa_lambda_two-monlast_est[hcode_est[i]])/elisa_lambda_three));
     
   }
   
   for (i in 1:Np) {
     
-    //ELISA growth curve - shamelessly stolen from http://www.magesblog.com/2015/10/non-linear-growth-curves-with-stan.html    
-    elisa_latent_pred[i] <-  elisa_lambda_one/(1 + exp((elisa_lambda_two - monlast_pred[hcode_pred[i]])/elisa_lambda_three));
+    //ELISA growth curve - shamelessly stolen from http://www.magesblog.com/2015/10/non-linear-growth-curves-with-stan.html
+    elisa_latent_pred[i] <- elisa_lambda_one - elisa_lambda_two * pow(elisa_lambda_three, monlast_pred[hcode_pred[i]]);
+    
   }
   
   
@@ -78,11 +79,11 @@ model {
   // Likelihood part of Bayesian inference
 
   
-  elisa_obs_est ~ normal((elisa_latent_est), sigma); 
-  elisa_obs_pred ~ normal((elisa_latent_pred), sigma); 
-  elisa_lambda_one ~ normal(100, 10); 
-  elisa_lambda_two ~ normal(5, 1); 
-  elisa_lambda_three ~ normal(5, 0.5); 
+  elisa_obs_est ~ normal(elisa_latent_est, sigma); 
+  elisa_obs_pred ~ normal(elisa_latent_pred, sigma); 
+ // elisa_lambda_one ~ normal(100, 10); 
+ // elisa_lambda_two ~ normal(5, 1); 
+ // elisa_lambda_three ~ normal(5, 0.5); 
   sigma~exponential(0.1);
   
   

@@ -85,12 +85,12 @@ dat_pred<-c(dat_pred,
 ##Creating separate 
 dat_model<-c(dat_est,dat_pred,p=6)
 
-fileName <- file.path(code.path,"fmd-probang-ELISA-mod.stan")
+fileName <- file.path(code.path,"fmd-probangmod.stan")
 resStan <- stan(fileName, data = dat_model,
-                chains =5, iter = 10000, warmup = 5000, thin = 10,control = list(adapt_delta = 0.99))
+                chains =5,cores=5, iter = 1000, warmup = 500, thin = 1,control = list(adapt_delta = 0.8))
 
 traceplot(resStan, pars = c("monlast_pred"), inc_warmup = TRUE)
-pairs(resStan,pars=c("beta","elisa_lambda_one","elisa_lambda_two","elisa_lambda_three"))
+pairs(resStan,pars=c("beta"))
 monlast_pred_stan<-summary(resStan,pars="monlast_pred")$summary
 ggplot(data.frame(monlast_pred_stan,monlast=herd_df_pred$monlast),aes(x=monlast,y=mean))+
   geom_errorbar(aes(ymin=X2.5.,ymax=X97.5.))+geom_point(col="red")+geom_abline(slope=1,intercept=0,col="blue")
