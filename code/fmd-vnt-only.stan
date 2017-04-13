@@ -38,8 +38,9 @@ parameters {
   real<lower=0> decay_asym;
   
   //real<lower=0> tau; 
-  real<lower=0> gamma_shape;
-  real<lower=0> gamma_scale;
+  //real<lower=0> gamma_shape;
+  //real<lower=0> gamma_scale;
+  real<lower=0> sigma;
   
 }
 
@@ -56,14 +57,14 @@ transformed parameters  {
        
     //elisa 
     
-    vnt_latent_est[i] <- decay_start*exp(-monlast_est[hcode_est[i]]*decay_scale)+decay_asym;
+    vnt_latent_est[i] <- decay_start*exp(-monlast_est[hcode_est[i]]*decay_scale);
     
   }
   
   for (i in 1:Np) {
     
     //ELISA growth curve - shamelessly stolen from http://www.magesblog.com/2015/10/non-linear-growth-curves-with-stan.html    
-    vnt_latent_pred[i] <- decay_start*exp(-monlast_est[hcode_pred[i]]*decay_scale)+decay_asym;
+    vnt_latent_pred[i] <- decay_start*exp(-monlast_est[hcode_pred[i]]*decay_scale);
   }
   
   
@@ -80,12 +81,18 @@ model {
   // Likelihood part of Bayesian inference
 
   for(i in 1:Np){
-  vnt_obs_est[i] ~ gamma(gamma_shape,gamma_scale*vnt_latent_est[i]); 
-  vnt_obs_pred[i] ~ gamma(gamma_shape,gamma_scale*vnt_latent_pred[i]); 
+  vnt_obs_est[i] ~ lognormal(log(vnt_latent_est[i]),sigma); 
+  vnt_obs_pred[i] ~ lognormal(log(vnt_latent_pred[i]),sigma); 
+  
+  //vnt_obs_est[i] ~ gamma(gamma_shape,gamma_scale*vnt_latent_est[i]); 
+  //vnt_obs_pred[i] ~ gamma(gamma_shape,gamma_scale*vnt_latent_pred[i]); 
   }
-  gamma_shape ~ cauchy(0,2.5);
-  gamma_scale ~ cauchy(0,2.5);
+  //gamma_shape ~ cauchy(0,2.5);
+  //gamma_scale ~ cauchy(0,2.5);
+  sigma ~ cauchy(0,2.5);
   decay_start ~ cauchy(0,2.5);
-  decay_scale ~ cauchy(0,2.5);
+  #decay_scale ~ cauchy(0,2.5);
+  decay_scale ~ exponential(100);
+  
   decay_asym ~ cauchy(0,2.5);
 }

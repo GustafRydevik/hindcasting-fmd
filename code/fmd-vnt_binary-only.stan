@@ -9,12 +9,12 @@ data {
   // covariates - estimation
   int<lower=0> hcode_est[Ne]; //herd id
   real age_est[Ne]; //age
-  int<lower=0,upper=1> probang_est[Ne]; //elisa 
+  int<lower=0,upper=1> vnt_binary_est[Ne]; //elisa 
   
   // covariates - prediction
   int<lower=0> hcode_pred[Np];
   real age_pred[Np];
-  int<lower=0,upper=1> probang_pred[Np];
+  int<lower=0,upper=1> vnt_binary_pred[Np];
   
   //herd related
   int<lower=0> He;
@@ -43,11 +43,13 @@ transformed parameters  {
    
   for (i in 1:Ne) {
     odds_est[i] = exp(beta[1] +beta[2]*monlast_est[hcode_est[i]] +beta[3]*age_est[i] + beta[4]*age_est[i]*age_est[i] +beta[5]*age_est[i]*monlast_est[hcode_est[i]]);
+    
     prob_est[i] = odds_est[i] / (odds_est[i] + 1);
   }
   
     for (i in 1:Np) {
     odds_pred[i] = exp(beta[1] +beta[2]*monlast_pred[hcode_pred[i]] +beta[3]*age_pred[i] + beta[4]*age_pred[i]*age_pred[i] +beta[5]*age_pred[i]*monlast_pred[hcode_pred[i]]);
+    
     prob_pred[i] = odds_pred[i] / (odds_pred[i] + 1);
   }
 }
@@ -55,10 +57,10 @@ transformed parameters  {
 model {
     monlast_pred ~ exponential(0.1);
   // Prior part of Bayesian inference (flat if unspecified)
-   beta ~ normal(0,log(10));
-   //probability of positive probang related to monlast 
-   //what we want is something like P(probang)~monlast; P(monlast)~Poisson(lambda), or other prior. 
-  // Likelihood part of Bayesian inference
-   probang_est ~ bernoulli(prob_est);
-   probang_pred ~ bernoulli(prob_pred);
+   beta[1]~cauchy(0,10);
+   for(i in 2:p){
+     beta[i] ~ cauchy(0,2.5);
+   }
+   vnt_binary_est ~ bernoulli(prob_est);
+   vnt_binary_pred ~ bernoulli(prob_pred);
 }

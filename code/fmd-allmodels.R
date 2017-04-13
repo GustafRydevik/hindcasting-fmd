@@ -17,7 +17,7 @@ bronsvoort_training_data_clean<-bronsvoort_training_data_clean[!is.na(bronsvoort
 
 ###Splitting up the data into prediction and estimation
 set.seed(1337)
-herd_pred<-sort(sample(herd_monlast$hcode,15))
+herd_pred<-sort(sample(herd_monlast$hcode,60))
 herd_est<-sort(setdiff(herd_monlast$hcode,herd_pred))
 
 
@@ -38,8 +38,8 @@ ind_df_pred<-left_join(ind_df_pred,herd_df_pred,by="hcode")
 with(ind_df_est,
      dat_est <<- list(
        probang = Probang,
-       age      = age,
-       vnt     = VNTAny,
+       age      = c(scale(age)),
+       vnt_binary    = VNTAny,
        elisa_obs=FMD_cELISA,
        hcode = hcode_stan_est,
        vnt_obs=FMD_VNT_SAT2
@@ -51,7 +51,7 @@ names(dat_est)<-paste(names(dat_est),"_est",sep="")
 herd_list_est<-list(
   He=nrow(herd_df_est),
   herd_est=herd_df_est$hcode_stan_est,
-  monlast_est     = herd_df_est$monlast
+  monlast_est     = herd_df_est$monlast/12
 )
 
 
@@ -64,11 +64,11 @@ with(
   ind_df_pred,
   dat_pred <<- list(
     probang    = Probang,
-    age      = age,
-    vnt     = VNTAny,
+    age      = c(scale(age)),
+    vnt_binary = VNTAny,
     elisa_obs=FMD_cELISA,
     hcode = hcode_stan_pred,
-    vnt_obs=FMD_VNT_SAT2
+    vnt_obs=scale(FMD_VNT_SAT2)
   )
 )
 
@@ -87,27 +87,32 @@ dat_pred<-c(dat_pred,
 ##Creating separate 
 dat_model<-c(dat_est,dat_pred,p=5)
 
-fileName <- file.path(code.path,"fmd-vnt-only.stan")
-resStan <- stan(fileName, data = dat_model,
+fileName <- file.path(code.path,"fmd-vnt_probang_elisa.stan")
+resStan_3indicators <- stan(fileName, data = dat_model,
                 chains =5,cores=5 ,iter = 10000, warmup = 5000, thin = 10,control = list(adapt_delta = 0.8))
 
-pairs(resStan,pars=c("decay_start","decay_scale","decay_asym","sigma"))
-traceplot(resStan,pars=c("decay_start","decay_scale","decay_asym","gamma_shape","gamma_scale"))
-traceplot(resStan, pars = c("monlast_pred"), inc_warmup = TRUE)
-
-
-herd_df_pred<-left_join(herd_df_pred,ind_df_pred%>%group_by(hcode)%>%summarise(vnt_mean=mean(FMD_VNT_SAT2),vnt_sd=sd(FMD_VNT_SAT2)),by="hcode")
-plot(herd_df_pred$vnt_mean,summary(resStan,"monlast_pred")$summary[,"mean"])
-
-monlast_pred_stan<-as.data.frame(summary(resStan,pars="monlast_pred")$summary)
-monlast_pred_stan$hcode<-herd_df_pred$hcode
-monlast_pred_stan$monlast<-herd_df_pred$monlast
-monlast_pred_stan<-left_join(monlast_pred_stan,
-                             (ind_df_pred%>%group_by(hcode)%>%summarise(probang_incidence=mean(Probang)))[,c("hcode","probang_incidence")],by="hcode")
+fileName <- file.path(code.path,"fmd-vnt_binary-only.stan")
+resStan_vnt <- stan(fileName, data = dat_model,
+                            chains =5,cores=5 ,iter = 10000, warmup = 5000, thin = 10,control = list(adapt_delta = 0.8))
+fileName <- file.path(code.path,"fmd-probang-only.stan")
+resStan_probang <- stan(fileName, data = dat_model,
+                            chains =5,cores=5 ,iter = 10000, warmup = 5000, thin = 10,control = list(adapt_delta = 0.8))
+fileName <- file.path(code.path,"fmd-elisa-only.stan")
+resStan_elisa <- stan(fileName, data = dat_model,
+                            chains =5,cores=5 ,iter = 10000, warmup = 5000, thin = 10,control = list(adapt_delta = 0.8))
 
 
 
-ggplot(data.frame(monlast_pred_stan),aes(x=monlast,y=mean))+
-  geom_errorbar(aes(ymin=X2.5.,ymax=X97.5.))+geom_point(col="red")+geom_abline(slope=1,intercept=0,col="blue")
+monlast_3indicators<-data.frame(summary(resStan_3indicators,pars="monlast_pred")$summary,model="3indicators")
+monlast_vnt<-data.frame(summary(resStan_vnt,pars="monlast_pred")$summary,model="vnt")
+monlast_probang<-data.frame(summary(resStan_probang,pars="monlast_pred")$summary,model="probang")
+monlast_elisa<-data.frame(summary(resStan_elisa,pars="monlast_pred")$summary,model="elisa")
+monlast_allmods<-bind_rows(monlast_3indicators,monlast_elisa,monlast_probang,monlast_vnt)
+
+monlast_allmods$hcode<-rep(herd_df_pred$hcode,4)
+
+monlast_allmods$true_monlast<-rep(herd_df_pred$monlast,4)
 
 
+ggplot(monlast_allmods,aes(x=true_monlast/12,y=mean))+
+  geom_errorbar(aes(ymin=X2.5.,ymax=X97.5.))+geom_point(col="red")+geom_abline(slope=1,intercept=0,col="blue")+facet_wrap(~model)

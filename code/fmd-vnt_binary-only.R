@@ -38,9 +38,9 @@ ind_df_pred<-left_join(ind_df_pred,herd_df_pred,by="hcode")
 with(ind_df_est,
      dat_est <<- list(
        probang = Probang,
-       age      = age,
-       vnt     = VNTAny,
-       elisa_obs=FMD_cELISA,
+       age      = c(scale(age)),
+       vnt_binary    = VNTAny,
+       elisa_obs=scale(FMD_cELISA),
        hcode = hcode_stan_est,
        vnt_obs=FMD_VNT_SAT2
      ))
@@ -51,7 +51,7 @@ names(dat_est)<-paste(names(dat_est),"_est",sep="")
 herd_list_est<-list(
   He=nrow(herd_df_est),
   herd_est=herd_df_est$hcode_stan_est,
-  monlast_est     = herd_df_est$monlast
+  monlast_est     = herd_df_est$monlast/12
 )
 
 
@@ -64,11 +64,11 @@ with(
   ind_df_pred,
   dat_pred <<- list(
     probang    = Probang,
-    age      = age,
-    vnt     = VNTAny,
-    elisa_obs=FMD_cELISA,
+    age      = c(scale(age)),
+    vnt_binary = VNTAny,
+    elisa_obs=scale(FMD_cELISA),
     hcode = hcode_stan_pred,
-    vnt_obs=FMD_VNT_SAT2
+    vnt_obs=scale(FMD_VNT_SAT2)
   )
 )
 
@@ -87,27 +87,27 @@ dat_pred<-c(dat_pred,
 ##Creating separate 
 dat_model<-c(dat_est,dat_pred,p=5)
 
-fileName <- file.path(code.path,"fmd-vnt-only.stan")
+fileName <- file.path(code.path,"fmd-vnt_binary-only.stan")
 resStan <- stan(fileName, data = dat_model,
                 chains =5,cores=5 ,iter = 10000, warmup = 5000, thin = 10,control = list(adapt_delta = 0.8))
 
-pairs(resStan,pars=c("decay_start","decay_scale","decay_asym","sigma"))
-traceplot(resStan,pars=c("decay_start","decay_scale","decay_asym","gamma_shape","gamma_scale"))
-traceplot(resStan, pars = c("monlast_pred"), inc_warmup = TRUE)
+pairs(resStan,pars="beta")
+
+traceplot(resStan, pars = c("beta"), inc_warmup = TRUE)
 
 
-herd_df_pred<-left_join(herd_df_pred,ind_df_pred%>%group_by(hcode)%>%summarise(vnt_mean=mean(FMD_VNT_SAT2),vnt_sd=sd(FMD_VNT_SAT2)),by="hcode")
-plot(herd_df_pred$vnt_mean,summary(resStan,"monlast_pred")$summary[,"mean"])
+herd_df_pred<-left_join(herd_df_pred,ind_df_pred%>%group_by(hcode)%>%summarise(vnt_incidence=mean(VNTAny)),by="hcode")
+plot(herd_df_pred$vnt_incidence,summary(resStan,"monlast_pred")$summary[,"mean"])
 
 monlast_pred_stan<-as.data.frame(summary(resStan,pars="monlast_pred")$summary)
 monlast_pred_stan$hcode<-herd_df_pred$hcode
 monlast_pred_stan$monlast<-herd_df_pred$monlast
 monlast_pred_stan<-left_join(monlast_pred_stan,
-                             (ind_df_pred%>%group_by(hcode)%>%summarise(probang_incidence=mean(Probang)))[,c("hcode","probang_incidence")],by="hcode")
+                             (ind_df_pred%>%group_by(hcode)%>%summarise(vnt_incidence=mean(VNTAny)))[,c("hcode","vnt_incidence")],by="hcode")
 
 
 
-ggplot(data.frame(monlast_pred_stan),aes(x=monlast,y=mean))+
+ggplot(data.frame(monlast_pred_stan),aes(x=monlast/12,y=mean))+
   geom_errorbar(aes(ymin=X2.5.,ymax=X97.5.))+geom_point(col="red")+geom_abline(slope=1,intercept=0,col="blue")
 
 
