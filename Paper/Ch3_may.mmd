@@ -1,0 +1,332 @@
+# Chapter 3: Hindcasting trends of infection from multiple test data #
+
+## Abstract ##
+
+This chapter describes a statistical approach to combine data from multiple diagnostic tests with different temporal characteristics to hindcast the historical trend of an infectious disease epidemic before the time of detection. Assuming a cross-sectional sample of individuals infected with a pathogen, a Bayesian MCMC approach is used for estimating time of exposure and the overall epidemic trend in the population prior to the time of sampling.  It is demonstrated how to utilize this approach to distinguish between decreasing and non-decreasing trends. Further, the difference in performance of this approach is described for idealized pairs of diagnostic tests, based on different host-pathogen dynamic scenarios.
+ Finally, we discuss the benefits of this novel methodology for the management of infectious diseases, and for evaluation of policy interventions. 
+
+## Introduction ##
+
+
+Pathogens are one of the major contributors to the burden of disease in humans[@Lopez2006], have a substantial economic impact on the  livestock industry[@Stott2003],  and can be a serious threat to conservation and management of wildlife populations[@Daszak2000]. A crucial component of efforts to control endemic disease is the use of  infectious disease surveillance for tracking trends and evaluating the effect of control measures.  The current state of human disease surveillance has been characterized as deficient in terms of both coverage and reporting speed[@Butler2006]. The more complex settings typical of livestock and particularly wildlife systems tend to result in the available surveillance data being sparser still for animal disease [@TMorner2002; @Perez2011; @TheRoyalSociety2002]
+
+The structure of a functioning disease surveillance system is complex, with a string of tasks that need to be accomplished before a case is recorded in a database and becomes available to epidemiologists and policy makers. However, a crucial part is the use of diagnostic tests to identify and confirm the type of pathogen that caused infection. This and the following chapter will argue that combining two or more diagnostic tests with quantitative measurements of the force of infection provide substantial additional information that can be used to estimate historic patterns of infections. Current analysis typically do not make use of such information. Therefore, a novel statistical approach is introduced for recovering population-level trends of exposure even from only cross-sectional data by combining knowledge of the dynamic characteristics of multiple diagnostic tests to infer the timing of exposure events for individuals. The process of recovering such trends will be referred to as “hindcasting”, following terminology established in other papers [@Wethey2008; @Banakar2011; @Kleczkowski2007d] for reconstructing historical trends from currently available data. This chapter will focus on the potential use of hindcasting in the case of endemic diseases, while chapter four describes the potential for hindcasting in an epidemic setting. 
+
+Changes in the epidemiology and/or incidence of endemic pathogens are ideally tracked through the use of routine, ongoing surveillance. However, in a number of situations and for a number of pathogens, such ongoing surveillance is either non-existent or limited in its ability to provide a full, unbiased view.  For some diseases, the epidemiology is known and the disease is considered important, but surveillance relies on diagnostic measures which are either expensive and underutilized, or lacking in sensitivity and/or specificity. One such example is the disease Scrapie in Sheep. Scrapie is a prion-spread disease with a very long incubation period, and difficult-to-detect symptoms. In the USA, Scrapie has decreased from a 0.2% prevalence to less than 0.05% between 2003 and 2009 thanks to introduced policy measures[@UnitedStatesDepartmentofagriculture2010]. However, there are substantial biases in  reported prevalence numbers, raising the need for additional surveillance measures [@DelRioVilas2010]. Another pathogen, endemic in most of Europe, with similar characteristics is  *Mycobacterium avium* subs. *Paratuberculosis*, also known as ”Johne’s disease”. Paratuberculosis infections are asymptomatic for a long period of time, only detectable after some period and with the use of specifically targeted tests[ref!]. Reported prevalences across Europe vary widely, from 0.1% to 20%, largely owing to the difficulty of diagnosis [@Nielsen2009]. With these kinds of so-called iceberg disease systems, where routine surveillance only captures a small proportion of actual cases, there is a strong need for alternative strategies that can ensure that the trend measured by routine surveillance systems is representative of the full epidemiology of the targeted disease system.  
+
+There are a number of endemic diseases that are considered low importance and therefore not targeted by surveillance. When such a disease suddenly gains importance, because of increasing prevalence induced by changes such as mutation of the pathogen, or due to realizations of the extent of its economic impact, the ability to rapidly gain an understanding of the historic trends would be extremely useful  in prioritizing and targeting interventions.  This can be the case even for  high profile pathogens such as the H5N1 flu virus, where the threat of silent spread in poultry flocks is a serious concern [@Savill2006].  Some pathogens have a very high incidence of  undiagnosed infections, where the pathogen circulate widely in the population and causing non-specific disease. Salmonella[@Simonsen2011] and Pertussis[@Hallander2009a] are two examples of human diseases where the true extent of infections have been unknown until fairly recently. Sexually transmitted infections are also often under diagnosed because of social stigma associated with testing. Chlamydia is a disease with a significant disease burden in most parts of the world[@WHO2012b], and where the prevalence in women is much better known, and often reported to be higher, than in men for whom the testing rate is much lower(see e.g. the introduction of @Gotz ). 
+
+For many endemic diseases, policies are put in place to reduce incidence or eradicate the disease - either locally, as with bovine viral diarrhea(BVD) in Scandinavia[@Stahl]; or globally, as happened with Rinderpest in Cattle[@FAO2013] and smallpox in humans[@WHO1980]. Measuring the impact of implementation of such policies is needed to ensure that eradication efforts are on the right track.  High costs restrict the implementation of longitudinal surveillance programmes whereas cross-sectional studies of disease are more common. Therefore, methodology that could infer temporal trends from cross sectional data would be extremely beneficial. The application of the hindcasting techniques described here could be used to extend the utility of such cross-sectional studies to fulfill some of the objectives of an ongoing surveillance system.
+
+Several papers have recovered limited historical characteristics of  the spread of pathogens from cross-sectional data using a single diagnostic test, e.g. an antibody test. For example, Giorgi et al. estimated the time of the start of an HIV outbreak under assumptions of exponential growth of viral load [@Giorgi2010b]. Others have exploited information on diagnostic test kinetics, i.e., the pattern of diagnostic test values during the course of infection, to estimate average incidence rates. Example includes the use of antibody test kinetics to estimate sero-incidence rates for influenza [@Baguelin2011], salmonella in cattle [@Nielsen2011] and salmonella in humans [@Simonsen2008].  One challenge in these kind of studies is that the relationship between the magnitude of signals from diagnostic tests and time since exposure is usually not monotonic; the signals tends to increase and then decrease. This means that the inverse problem of estimating time since exposure given a test value is non-unique and although this can be framed as a statistical problem the resulting inference is highly uncertain [@Giorgi2010b],[@Simonsen2009], limiting what can be estimated from test data. However, there are often several diagnostic tests available that target different aspects of the multi-faceted dynamic interaction between host and pathogen  [@Casadevall2001], and would thus exhibit different test kinetics. That is, the profile of test responses, as a function of time since exposure, will differ depending the underlying diagnostic used. This mean that, in principle,  we can generate a unique signal for a given time since exposure by combining results of  several diagnostic tests that respond on different time scales. Here, this fact is exploited to develop a more robust statistical approach for analyzing cross-sectional field data from two or more diagnostic tests. Empirical infection models  that characterize test kinetics are used to infer the time since exposure for each individual. While there is large uncertainty in the estimated exposure time for each individual, the combined estimates from multiple individuals describes the overall population-level distribution of infection times, which can be used to  estimate the overall trend of incidence.
+
+In an endemic setting, trends of infection are often gradual, and can be approximated by a constant change per time unit (month, year, decade). The chosen approach in this chapter was thus to posit that the incidence follows a linear trend with some slope, and that the disease is common enough that reinfections cannot be ignored. Section 3.2 develops the statistical framework for hindcasting in general, while section 3.3 details the mathematical consequences of assuming a constant linear trend with reinfections on inference of the trend from cross-sectional data. Section 3.4 details the choice and implementation of test kinetics.  Section 3.5 details results from applying the framework to data simulated under a range of different scenarios. Finally, section 3.6 discuss the implications of the results and the hindcasting framework. 
+
+## Statistical framework ##
+
+The statistical framework used for hindcasting in this thesis assumes test data $y_{nk}$ from multiple disease diagnostics indexed by $k=1,\ldots,K$ on individuals $i=1,\ldots,N$. Each individual is assumed to have been tested at some time $t_i$, after having been exposed to the pathogen at some earlier time $e_i$.  It is further assumed that these individuals are chosen in an unbiased, random manner from a larger population. Each diagnostic test is assumed to return a value in the form of a continuous ‘level’, which might, for example be the highest dilution at which antibodies are detected in a serological test. Without loss of generality, these levels are assumed to be scaled to the unit interval [0,1]. 
+
+Initial exposure to a pathogen is the start of a complex dynamical process within the host. Such internal host-pathogen interactions can be conceptualized as a multivariate process that depends on the time since initial exposure.  Each diagnostic test is assumed to target the state of a different component of this process so that each test $k$ carried out at time $t_i$ on individual $i$ can be modelled as a latent variable $l_{ik} (t_i , e_i )=l_{ik} (d_i )$, with each test having differing but correlated response patterns over the time since initial exposure $d_i=t_i-e_i$.  these latent variables  are modelled using results from experimental infection studies for a given host-pathogen system, where the length of time since initial exposure $d_i$ is known.
+
+The known data, across all individuals in the sample, comprises a set of test results denoted by $Y=\{y_{ik}\}$ with sampling times $T=\{t_i\}$. The aim is to infer the unknown set of exposure times $E=\{e_i\}$ , using information on the behaviour of the latent processes $L=L(T,E)={l_{ik} (t_{i},e_{i})}$ generating the test results. In the hindcasting model, $L$ represents the expected value of the test results given $e_i$ and $t_i$. Note that when describing these sets the limits of each index $k=1,\ldots,K$  and $n=1,\ldots,N$ are implicit.  
+
+Under the hindcasting model, it is assumed that the sampling times $T$ are precisely known whereas the quantities $Y$, $L$ and $E$ are assumed to be subject to uncertainty and variation. There are thus three components to the statistical model: a latent process model $P(L|T,E,\theta_L)$ describing uncertainty and variation in the host-pathogen interaction process within the host in terms of the time since initial exposure; a testing or observation model $P(Y|L,\theta_Y)$ describing the distribution of results from tests carried out on the hosts conditional on the internal latent process; and an epidemic trend model $P(E|T,\theta_e)$, describing the historical development of the epidemic in terms of the distribution of exposure times in the sampled host population, at the time of sampling. The specific implementations of each of these components in the linear trend setting is described in the next two sections. 
+Combining the three parts of the model, the full data likelihood given an observed data set $\{Y,T\}$  is written as 
+$P(Y,E,L|T, \theta)=P(Y|L,\theta_Y )P(L|T,E,\theta_L)P(E|T,\theta_E)$, where $\theta =\{\theta_Y,\theta_L,\theta_E\}$
+ Thus the likelihood combines models for testing with those for within and between host pathogen interactions. 
+
+According to Bayes’ theorem, the so-called posterior distribution for the unknown parameters is proportional to the data likelihood and prior $P(\theta)$.  Using the parameters of interest $\theta$,  the latent process $L$, the exposure times $E$, given the observed test data $Y$ and sampling times $T$, the posterior distribution can be described by the equation 
+$$P(L,E,\theta|Y,T)=(P(Y,E,L|T,\theta)P(\theta))/(P(Y,T))$$
+
+Within the Bayesian framework all inference is based on the posterior. The prior $P(\theta)$ can result from previous measurements or expert opinion, and represents knowledge about the values of the parameters before any of the data used in the likelihood is observed.  
+
+In what follows, the simplifying assumption will be made that the latent process $L$ is modelled by a known deterministic function of $T$ and $E$. This means that the term $P(L|T,E,\theta_L )$ drops out of the likelihood which then simplifies to 
+$P(Y,E|T,\theta)=$
+$P(Y|L(T,E),\theta_Y )P(E|\theta_E )$, and the posterior becomes
+$P(E,\theta|Y,T)=  P(Y,E|T,\theta)P(\theta)/(P(Y,T))$
+
+Note that under this notation any parameters defining the deterministic latent process $L(T,E)={l_nk (t_n,e_n)}$ are suppressed since they are not inferred i.e. $\theta=\{\theta_Y,\theta_E\}$.
+
+In both cases above the normalization factor $P(Y,T)$ is typically unknown and computationally expensive to calculate. However, standard Markov Chain Monte Carlo (MCMC) methods circumvent this problem and are able to generate samples from the posterior even though the normalization is unknown (see @Robert2011 for an interesting overview of the historical development of this approach). 
+
+## Parametrization of a linear trend of incidence  ##
+
+### Distribution of times since infection (tsi) under linear trend ###
+
+The most basic scenario used for hindcasting a disease trend represents an endemic disease, with cases occurring at a constant rate. Formally, this scenario can be defined by assuming  that the entire population is exposed to a force of infection $\lambda$.  For a random observed individual, the time since last infection is then distributed according to an exponential distribution with rate parameter $\lambda$, $P(t<T)=\int_{x=0}^{T}\lambda e^{- \lambda x}dx=1-\lambda e^{- \lambda T}$.
+
+This basic scenario was then modified to a scenario where there the force of infection  has been changing over time according to a linear trend, $\lambda=\alpha+\beta t$.  However, this linear trend describes the incidence over time if the cases are reported continuously. If, instead, the cases are collected at a single point in time at some point after infection, the distribution of interest is then  the distribution of times since last infection(”tsi”) in the population,  hereafter denoted $f_{tsi}(t)$, under the assumption of a linear trend. 
+
+The incidence of infection can also be referred to as the average *hazard rate* of infection. Given a constant hazard rate $lambda$, the probability of the event $I% of having been infected by time $t$ is given by $1-e^{-\lambda t}$.  In the linear trend scenario, $\lambda=\alpha+\beta t$ as mentioned above. Because of the linearity of the trend,  over a time period from 0 to $t$, the probability of having been infected before that time is equivalent to the probability of having been infected under a constant trend of the mean incidence over the period, $\hat{\lambda }=\alpha+\beta t/2$, and so by analogue to the constant case, this probability can be written as  $P(I<t)=1-e^{-(\alpha+\beta*t/2)*t}$. From this, the probability density function for the times since infection can be calculated as $f_{tsi}(t)=d(P(i<t))/dt=(\alpha+\beta t)e^{-(\alpha+\beta t/2)t}$. 
+
+In the implementation, this distribution was assumed to be censored at some time point in the past $C$, and it was further assumed that it was possible a priori to distinguish individuals that had been infected at some point during this time period, from naive individuals.  When implementing such a censoring, the equation above needs to be modified by an additional scaling factor
+$1-e^{-(\alpha+\beta C/2) C}$, equal to the integral of $p(t)$ over the time span $(0,C)$. The full equation used to represent the distribution of exposure times was thus 
+  $$p(t)=(\alpha+\beta t) e^{-(\alpha+\beta t/2) t}/(1-e^{-(\alpha+\beta C/2) C})$$
+
+As the model is implemented in the Bayesian framework, priors for both the  incidence ($\alpha$ and trend ($\beta$) parameters needs to be specified. In order to provide a prior for the incidence,  information about the population size needs to be incorporated. This was done by noting that the number of positive and negative individuals in a population can be approximately described by a binomial model, parameterized by the probability of infection $p$. Then denote by $N_{+}$ the number of positive individuals known to have been infected during a time period $C$, from a population of size $N$. With an uninformative $Beta(1,1)$ prior for the probability of infection $p$ the distribution of the probability of infection given the number of positives and negatives observed  is 
+$p \sim \beta (N_{+}+1,N-N_{+}+1)$. 
+ Under the assumption of a linear trend,  the mean incidence over the time period $C$ is equal to the  the incidence at time $C/2$, $\hat{\lambda}=\alpha+\beta \times C/2$.
+The proportion $p$ of observed positive individuals are exactly one minus those that had not been infected during any of the time periods up until the time of censoring C. From this observation, the  mean incidence $\bar{\lambda}$ per time unit  can be derived from the proportion of  positive individuals over the time period C by the relationship:
+
+$$p=1-(1-\bar{\lambda})^C \rightarrow 1-\bar{\lambda}=(1-p)^{1/C}\rightarrow \bar{\lambda}=1-(1-p)^{1/C}$$
+
+For the trend parameter $\beta$, note that if the linear trend model is assumed to hold over the time period $C$, then the incidence is not allowed to  become negative over this time. Using this, the restriction for the trend becomes:
+$$
+\bar{\lambda}\pm\beta\times C/2>0 \rightarrow 
+$$
+$$
+\bar{\lambda}> \beta \times C/2>-\bar{\lambda} \rightarrow 
+$$
+$$
+\bar{\lambda} 2/C > \beta >-\bar{\lambda}\times 2/C 
+$$
+
+Following this, the trend was assigned a uniform prior, $\beta \sim U(-\bar{\lambda}\times 2/C,\bar{\lambda}\times 2/C)$.
+The intercept parameter $\alpha$ was then simply calculated from trend and $\bar{\lambda}$ via 
+$\alpha=\bar{\lambda}-\beta\times C/2$. 
+
+![_Time since infection vs the value of $f_{tsi}(t)$, when assuming a linear trend of incidence that is either decreasing, constant, or increasing._](./images/Ch3/fig_3_1_ftsi.png)
+
+
+At this point, it should be pointed out that the properties of distribution $f_{tsi}(t)$ of times since infection are somewhat counterintuitive.  Figure 3.1 shows its shape for decreasing ($\alpha=0.05$), constant ($\alpha=0$), and increasing ($\alpha=-0.05$) parameter values, holding $\beta$ constant to 0.1. 
+The first thing to note is that because we are looking backwards in time, coefficients have opposite sign - $\alpha=0.05$ denotes that the incidence  rate has been decreasing by 0.05 per time unit, whereas $\alpha=-0.05$ denotes that the incidence rate is increasing.  The second thing to note is that all three curves have the same upwards slope. The further back in time we look, the less likely we are to find a case that occurred at that time. In effect, by only considering the time since last infection, we are assuming that a reinfection resets the "clock" of the infectious disease dynamics. This in turn means that more recent infections can hide infections that occurred further back in time.  However, by looking at the curvature of the exponential distribution, it is still positive to estimate the actual incidence trend. 
+
+
+
+### Properties of the linear-trend induced distibution of times since infection  ###
+
+The aim of this chapter is to recover the population-level trend of incidence from test measurements taken from individuals that have been infected at a some point in the past in a population where the time-since-infection (tsi) distribution is defined above, i.e.
+$$f_{tsi}(t)=(\alpha+\beta t) e^{-(\alpha+\beta t/2) t}/(1-e^{-(\alpha+\beta C/2) C})$$
+[number equation!]
+In order to study the properties of this inference problem, a first approach is to investigate the simplified situation where the times of infection are known and generated using $f_{tsi}$. 
+
+Including the priors described in the previous section, the expression for the  log likelihood  of $f_{tsi}$  given observations of time since infections $X$ (denoted by $LL_{f}$),  becomes
+
+$$LL_{f}(\alpha,\beta |X)= 
+\log(U(\alpha |-2\times \bar{\lambda}/C,2\times \bar{\lambda}/C))+ $$
+$$
+    \log\beta(\bar{\lambda} | N+1, N-N_{+}+1))+
+$$
+$$
+  \sum_{\forall i }log[(\lambda+\beta\times X_{i})\frac{ e^{-(\lambda+\beta\times X_{i}/2)X_{i}}}{(1-e^{-(\lambda+\beta\times C./2)\times C))}}\times I(X<C)] $$
+
+Times of infections $X=\{x_i\}$ were simulated from the probability distribution of $f+{tsi}$, and the value of the log likelihood $LL_f$ given the simulated data was calculated over a grid of values for $\alpha$  and $\beta$.  Typical results are shown in Figure 3.2. Note that this is assuming that the times of infection were exactly known. 
+
+![_Likelihood surface of $LL_{f}$ over $\alpha$ (x-axis) and $\beta$(y-axis), conditional on a collection of 1000 times since infection generated from the probability distribution defined by $f_{tsi}=(\alpha+\beta T) e^{-(\alpha+\beta T/2) T}/(1-e^{-(\alpha+\beta C/2) C})$. Yellow indicate a likelihood value in the highest quantile, blue indicate a likelihood value in the lowest quantile. Note that this assumes that times since infection are known exactly; the full model includes estimating these times since infection from test data._](./images/Ch3/fig_3_2_loglik.png)
+
+Figure 3.2 shows the resulting likelihood surface of $LL_f$. There are two things to note in this image: the first one is that the region of highest likelihood is in a region surrounding the black line. This black line is the line for which the combination of $\alpha$ and $\beta$ results in the same average incidence $\bar{\lambda}$, which indicates that the Beta prior on $\bar{\lambda}$ has a strong influence on the curvature of the likelihood surface. 
+The second thing to note is that along the line of equal mean incidence, there is little change in the colour, and that there is little distinguishing the region surrounding the  true value (noted by the black dot), from the rest of the region. This indicates that while it will be relatively easy to recover the value of $\bar{\lambda}$, finding the correct combination of $\alpha$ and $\beta$ is more challenging.
+
+  
+
+## Test kinetics ##
+
+The hindcasting framework exploits knowledge of the kinetics of diagnostic test responses after infection, and thus by extension uses (stochastic or deterministic) aspects of the dynamic process that develop following the introduction of a pathogen to a host. This process is complex, with a wide variety of factors. However, as pointed out by [@Pugliese2008],  for many applications it is enough to describe this dynamic as a two-part interaction, with one variable representing the overall level of immune response, and a second variable representing the total pathogen burden. Formalizing the interaction of these two variables over time by simple paired differential equations, it is possible to capture  many of the qualitative patterns of interest for disease modelling, as will be demonstrated here, this approach proves useful as the basis for statistical inference. 
+
+It will be assumed that the kinetics of antibody test response after infection reflects an underlying development of the host immune response. Similarly, when looking at the kinetics of e.g. a quantitative PCR test, the development of the measured quantity of nucleic acid will be assumed to reflect the pathogen burden in the host. Under these assumptions, a paired differential equation approach can be used to generate realistic paired test kinetics as for modelling host-pathogen interactions.
+
+For the purpose of evaluating the framework, example test kinetics were generated using a Lotka-Volterra predator prey type model. This type of model is usually defined in terms of the growth rates of two populations, a "predator" population, and a "prey" population, where the "predator" eats eats the "prey". For more details on the properties of such models, see e.g. @Wangersky1978. In our case, the pathogen fills the role of the "prey" which is being hunted by the immune response, our predator.  Denoting pathogen levels at time t by $NA(t)$ and immune response levels at time t by $Ab(t)$  the model can formally be written as:
+$$
+d Na / d t = (b_{NA}-h\times Ab(t))\times Na(t)
+$$
+$$
+d Ab(t) / d t = b_{Ab}\times Na(t)-d_{Ab}Ab(t)
+$$
+
+In these equations, $b_{NA}$ can be interpreted as the growth rate of the pathogen in ideal conditions, and $h$ can be interpreted as the proportion of pathogens that dies per time unit for each unit level of immune response (i.e. the predation rate). $b_{Ab}$  is the the unit level of increase in immune response generated per time unit for each single pathogen organism present in the host, and $d_{Ab}$ indicates the rate of decline of the immune response per time unit in the absence of stimulation by presence of the pathogen.
+
+The Lotka-Volterra equations can be solved for a given set of parameter values using any generic linear ordinary differential equation (ODE) solver to generate a bivariate function $LV(t)={Ab(t),Na(t)}$ describing the mean trajectory of antibodies and pathogen load over time. In practice, the values of $LV(t)$ was pre-calculated for a range of time points and stored in a lookup-table.
+ 
+![_Graph of a typical Lotka-Volterra curve. X-axis indicate time, y-axis indicate "population size"/antibody level/pathogen load. Red line indicate the trajectory for the prey (pathogen), blue indicate the trajectory of the predator (antibody level)._](./images/Ch3/Fig_3_3_lV_example.png)
+
+
+Given a particular time since infection $t$, observed test measurements are then assumed to be log-normally distributed around $LV(t)$. Specifically, it is assumed that test measurements comes from a bivariate lognormal distribution around $LV(t)$ with zero correlation and independent standard deviation for the two tests: $$\log N(Y|\mu=\log( LV(E) ),\Sigma=(\sigma_1^2,\sigma_2^2))$$
+
+
+
+
+
+The exact combination of tests used could have an impact on the performance of the hindcasting procedure. By varying the parameters of the Lotka-Volterra equations, three different combinations of tests was generated, representing three canonical patterns of  host-pathogen interaction in terms of test responses as a function of time since exposure. Table 3.1 shows the parameter values used for each of these interaction types; these can be multiplied by a suitable scaling factor to ensure that the dynamic develops over a suitable time scale. 
+
+![_Graphs of the three types of LV dynamics used, development over time and phase plots. Left hand side shows kinetic curve over time. Right hand side shows phase plots in terms of locations over time in the space of Antibody load (x-axis) times pathogen load (y-axis). The graphs on the right hand side also display example test results, generated by assuming 25% lognormal noise around the mean curves. Dashed line indicate where on the the kinetic curve each point originate from_](./images/Ch3/Fig_3_4_LV_phase_time.png)
+
+
+Figure 3.4 shows development over time together with phase plots for the  three different canonical patterns. 
+The set of parameters corresponding to the ”incubating pathogen” type captures the type of interaction one would see for a pathogen which has an incubation period during which it is reaching full strength, followed by an immune response and a decline of pathogen levels, until the host is completely cleared. This is modelled by assuming a high growth rate for the pathogen, a moderately high number of antibodies generated per pathogen, antibodies being efficient at killing the pathogens, and a slow die off of antibodies. This result in an initial high pathogen growth, until the antibodies have caught up, bringing the pathogen load under control. Influenza is a classic example of a disease where incubation play a major role in its epidemiology and pathogenesis [@Carrat2008].  
+
+The second set of parameters,labelled as  ”Fast-acting pathogen”, assumes that the growth phase of the pathogen have already been completed at t=1, modelled by having a high starting value for the nucleic acid values. It then models the dynamic as a slow pathogen growth, each antibody killing one pathogen per day, and a low growth and die-off rate for the antibodies, so that it takes some time for the pathogen load to be brought down to zero.  This pattern models rapid-acting diseases such as norovirus infection [@Lessler2009].
+
+The third set of parameters, modelling a ”chronic infection with acute phase”, assumes that the growth rate of the pathogen is equal to the die-off rate of the antibody, that each pathogen generates 1.5 antibodies, and that each antibody kills 0.5 pathogens. In this way, the pathogen load and the antibody levels reach a slowly declining equilibrium after an initial growth phase, resulting in high levels of both antibodies and pathogen load remaining for some time after the pathogen has peaked.  Scrapie and Tuberculosis are two diseases that follows this type of pattern. 
+
+--------------------------------------------------------------------------------------------------
+Pathogen type   Prey growth Pred kill %  Pred. growth prey death Starting state Prey peak time
+--------------- ----------- ----------- ------------- ---------- -------------- --------------
+Incubating      10          0.5         2             0.1        na=1,ab=0      7
+
+Fast-acting     0.1         1           0.1           0.1        na=20,ab=0     1
+
+Chronic w.      1           0.5         1.5           1          na=1,ab=0      10
+acute phase
+--------------------------------------------------------------------------------------------------
+: Table of parameter values for different types of LV curves. 
+
+The time scale over which these kinetics develop vary depending on the type of pathogen modelled. As mentioned earlier, Scrapie (which would be a type 3 disease) is a a very slow-developing disease, where the expected development of the pathogen level would be on the order of several years [@UnitedStatesDepartmentofagriculture2010]. Similarly, Paratuberculosis (also type 3) can take up to a year to multiply in the host before it starts showing symptoms [@OIE2012]. On the other hand, bluetongue virus (a type 1 disease, with a 10 day incubation period) in sheep has a time period of 2-7 weeks from infection, through incubation and showing of symptoms, to potential clearing of the disease[@Sperlova2011]. In humans, Chlamydia (also resembling a type 1 disease) takes around a month to show symptoms, but the bacteria can then remain persistent at a low level for months or years after that, causing damage to the patient[@Hogan2004]. Norovirus infection (a type 2 disease) have a very quick course of action with only about 4 days from infection to clearance [@Patel2009]. 
+
+
+ In general, we can only expect accurate estimation of trends over lengths of time equivalent to the maximum time it takes for the infection dynamic if the infection dynamic to go from exposure to clearing the infection and removing all antibodies. Fortunately, antibodies often remain for extended periods of time; however, once the pathogen is cleared, the benefits of multiple tests are lost. If the dynamic reaches a more-or-less steady state with only minor changes at $T=5$ (whatever the unit of T is), then we can only reasonably expect to distinguish times since infection up until time 5, and by extension only expect to hindcast population-level dynamics of the disease that occurred within that time frame. 
+The important characteristic of multiple diagnostic tests for the purpose of hindcasting is that the different tests have different developments over time, so that it is possible to combine the test results into as close-to-unique signatures of times since infection as possible. The greater the difference between test trajectories, the more precision is gained from combining them. Even with two tests with identical kinetic trajectories, the combined measurement will reduce measurement error and increase precision. However, with increasing separation of timescales, the ability to distinguish early from late infections becomes both more robust, and more sustainable under higher levels of measurement error. 
+
+From these observations, and looking at the three categories of paired kinetics displayed above, we would expect combined test data from the ”Incubating pathogen” to give precise levels of estimate under moderately high levels of noise up until $T=7$, since the kinetic is relatively stable after that point. The ”fast-acting pathogen” reaches a  slow-changing state after $T=15$ for both antibody levels and pathogen load, and would thus have difficulty providing information beyond this time horizon. The final type of host-pathogen interaction, ”Chronic infection with acute phase”, exhibits a well-defined separation between the two curves and a strong interaction occurring up until $T=20$, indicating that such an infection may provide useful information at least up until that time. 
+
+## Implementation ##
+
+### Describing the endemic trend using the hindcasting framework ###
+
+The test kinetics and the distribution of times since infection are integrated to make use of the hindcasting framework. Recall that in general, the posterior probability $P(E,\theta|Y,T)$ of a set of exposure times $E$ given observed data $Y$ and observation times $T$ can be written as a combination of a deterministic process $L(T,E)$ of expected test results at a given time point , an observation process $P(Y|L(T,E),\theta_Y )$, and a distribution of exposure times $P(E|\theta_E )$, forming the expression 
+$$P(E,\theta|Y,T)= P(Y|L(T,E),\theta_Y )P(E|\theta_E )P(\theta)/(P(Y,T))\sim $$
+$$P(Y|L(T,E),\theta_Y )P(E|\theta_E )P(\theta)$$  
+
+In this linear trend scenario, the distribution of exposure times was defined as $P(E|\theta_E )=f_{tsi}(E|\alpha, \beta)=(\alpha+\beta E) e^{-(\alpha+\beta E/2) E}/(1-e^{-(\alpha+\beta C/2) C})$, with the priors defined in section 3.4. The deterministic function $L(T,E)$ describing expected test levels was set as the solution $LV(t)$ to the Lotka-Volterra equations defined in section 3.5.   
+
+Finally, the observation process $P(Y|L(T,E),\theta_Y )$ giving the distribution of observed test data was set as a bivariate lognormal distribution around $LV(t)$ with zero correlation and independent standard deviation for the two tests: $$P(Y|L(T,E),\theta_Y )= \log N(Y|\mu=\log( LV(E) ),\Sigma=(\sigma_1^2,\sigma_2^2))$$
+
+Defining suitable priors for  the lognormal distribution proved challenging - in the traditional parametrisation of the lognormal distribution, standard deviation $\sigma$  is defined on the log scale. In terms of interpretability, it is easier to work on the observed scale, using $(\sigma_1^{\star},\sigma_2^{\star})=\exp((\sigma_1^2,\sigma_2^2))$. Then, $\sigma^{\star}>1$, and interpretable as the multiplicative variation around the mean; e.g. $\sigma^{\star}=1.5$ says that the standard deviation is 50\%. However, when putting a prior on $\sigma^{\star}$, and generating posterior samples, the MCMC chains proved to be mixing very slowly. This was likely due to the the sampler having a fixed step length despite a step change in of size $\delta$  when $\sigma^{\star}$  is close to one has a much larger effect on the likelihood than the same $\delta$ step when $\sigma^{\star}$ is large. To counter this slow mixing, the prior was instead set for the exponential of $\sigma^{\star}-1$, and given an exponential distribution $P(x)=\lambda e^{-\lambda (x-1)}$, shifted to account for $x$ always being above 1. The full expression of the prior is thus  $P(e^{\sigma^{\star}-1}=x)=\lambda e^{-\lambda (x-1)}$. After experimentation, $\lambda$ was chosen to be 20, which gave a posterior where the majority of the mass was under $\sigma^{\star}<1.5$, and only an infinitesimal mass above $\sigma^{\star}>2.0$.
+
+Given the priors, the model for times since exposure, and the priors, the full expression for the posterior distribution of $P(E,\theta|Y,T)$  thus becomes
+
+$$P(E,\theta|Y,T)= P(Y|L(T,E),\theta_Y )P(E|\theta_E )P(\theta)=$$
+ $$\prod_{\forall i }[ \log N(Y_{i}|\mu=\log( LV(E_{i}) ),\Sigma=(\sigma_1^{\star},\sigma_2^{\star}))] \times $$
+$$\prod_{\forall i }[(\lambda+\beta\times E_{i})\frac{ e^{-(\lambda+\beta\times E_{i}/2)E_{i}}}{(1-e^{-(\lambda+\beta\times C/2)\times C))}}\times I(E_{i}<C)] \times $$
+$$\lambda e^{-\lambda(e^{\sigma_1^{\star}-1}-1}\times\lambda e^{-\lambda(e^{\sigma_2^{\star}-1}-1}\times$$
+ $$U(\alpha |-2\times \bar{\lambda}/C,2\times \bar{\lambda}/C) \times$$
+$$
+\beta(\bar{\lambda} | N+1, N-N_{+}+1)) 
+$$
+
+
+
+
+### Simulated data for framework evaluation ###
+
+
+In order to determine the feasibility of the approach laid out in previous section, the potential for the hindcasting framework to detect the direction of change of incidence of infections in a generic population was evaluated. 
+
+In a first step, the framework was applied to three data sets generated under different scenarios: a scenario with constant incidence trend, an scenario with an increasing incidence trend, and a scenario with a decreasing incidence trend. 
+
+Following this, the impact  and interaction of a number of different factors on the hindcasting performance was investigated. Thes factors were the number of tests used for sampling, the direction and magnitude of the trend, the different types of disease, and the length of time over which the trend occurred. 
+
+Finally, the performance of the framework was also evaluated for three case studies of plausible parameter values, to produce a first indication of the real-world usefulness of the hindcasting framework. These were modelled after Scrapie in sheep, Chlamydia in humans, and squirrelpox in squirrels, 
+
+Scrapie  in the US has been subject to an intense control effort since around 2002. Between 2003 and 2000, the estimated prevalence decrease from 0.2% to 0.05%, a reduction of 75%,equivalent to a 12.5% reduction per year over 6 years [@UnitedStatesDepartmentofagriculture2010, p7].  In terms of Lotka-Volterra dynamics, Scrapie would correspond to a slow pathogen with a longterm chronic infection, the second of the three generic disease types. Based on this these numbers, a scenario was evaluated with a starting incidence of 0.2%, a 12.5% reduction per year over 6 years, using a disease type 3 acting on a timescale where peak pathogen burden is reached after 3 years, the typical time of onset of clinical signs [@UnitedStatesDepartmentofagriculture2010, p9].
+
+Chlamydia incidence in Sweden decreased between 1990 and 1995, after which the trend reversed and  increased until 2007. In 2006, a mutated strain of _Chlamydia trachomatis_ that was not detected by the standard tests started spreading in some counties[@Herrmann2008]. By the time this strain had been discovered and tests adjusted, a number of cases that would otherwise have been detected continued carrying the infection and infected others. By 2007, the number of cases reported yearly had increased from ~32500 in 2004 to 47500, a 50% increase. Based on these events, a scenario was modelled by assuming a 0.02% incidence (the approximate incidence among 20-24 year olds, the highest-risk group). Chlamydia was considered a type 1 disease where the disease dynamic plays out over 2 years (considering the potential for persistent infections as well as remaining antibodies), and a trend of 50% increase over these two years. 
+
+Squirrelpox is a viral disease that play a major role in the decline of European red squirrel (_Sciurus vulgaris_) populations in the UK. The eastern grey squirrel (_Sciurus carolinensis_), which are asymptomatic carriers of squirrelpox, was imported to the UK at the beginning of the last century[@Stritch2015]. The grey squirrels have since spread the disease to the red squirrels, for which squirrelpox is a deadly infection. Squirrelpox infections have recently been reported in Ireland, and a study there have indicated a 34% seroprevalence[@Stritch2015]; though it is unknown how long the virus has been circulating.  This setting was modelled by assuming a 30% incidence at the time of sampling, assuming a fast-acting type 2 disease where the dynamic process lasts over three years (the life expectancy of red squirrels).
+
+The Scrapie scenario investigates the number of cases required to use the hindcasting framework for evaluating the effect of control measures in a low-incidence, livestock context. The Chlamydia scenario investigates the number of cases required to recover increasing trends in a medium-incidence human context. 
+The  squirrel pox scenario investigates the precision with which one can estimate differing trends in a high-incidence, wildlife context where the available number of samples are limited. For these three case studies, the performance was evaluated by assuming that a number of positive samples had been collected, and that the test results of these samples had been used to estimate the trend. Ten different datasets was generated for each set sample size, and the hindcasting framework was applied to each data set. Figure XX shows how the performance varied across the case studies and study sizes:
+
+For all the various scenarios used to evaluate the performance of the hindcasting framework, data was generated by sampling the required number of  times of infections from the distribution $f_{tsi}$ of times since infections under a linear trend. For each scenario, datasets of varying sizes, i.e different number of individuals, were generated. Given these sampled times of infection and a specified pair of disease kinetics, sample data was generated using a lognormal observation error around the expected mean test values defined by the kinetics. 
+The multiplicative standard deviation for the lognormal observation term $P(Y|L(T,E),\theta_Y )$ was set to 25% percent variation around the mean kinetic curve.
+The overall population size that was sampled was chosen so that the expected number of positive samples would be constant across scenarios with different levels of incidence. By fixing the number of positive samples, rather than sample sizes of positive and negative individuals, the effect of differing trends and levels of incidence could be evaluated without being confounded with sample size effects. 
+
+The total number of  different scenarios was 193, with each scenario being run 11 times, each time with newly generated data. The jags code for evaluating these  scenarios was run on Amazon's  cloud computing service EC2. Running all 2213 scenarios  took 72 hours using a 32 core computation-optimized linux instance. 
+
+
+### Sampling from the posterior using JAGS ###
+
+
+For conducting inference of the endemic trend, the posterior distribution of parameters described in the previous section is evaluated, conditional on observed test data and knowledge of expected test kinetics. 
+
+A high level language for hierarchical Bayesian models known as JAGS [@Plummer2003]  was used to implement the statistical framework (see appendix for example JAGS code) and evaluate the posterior distribution using the Metropolis-Hastings algorithm combined with Gibbs sampling (see section 1.X for a more detailed discussion).  The code was called from within R using the _rjags_ package [@Plummer2014].
+Samples were taken from the posterior distribution of time since infection for each individual, as well as the posterior distributions of the parameters of the trend of incidence. 
+
+As noted in the introduction (section 1.X) a key question with the implementation of MCMC algorithms is that of convergence and mixing. The reliability of our sampling tools were assessed using  trace plots. Figure 3.5 shows example trace plots from three scenarios (decreasing, constant and increasing trend) of the last 1000 draws (thinned so that every 10 draw is shown) of the population level trend parameter $\beta$, the intercept parameter $\alpha$, and the mean incidence $\hat{\lambda}$ (see equation XX), from five different chains after all chains have been run for a 1500 iteration burn-in.  The chains mixed well for all scenarios, with Gelman-Rubin statistics of $\sim 1.00$ for all three scenarios and parameters (for a more detailed discussion on issues of convergence, see section 1.X).
+
+For the full range of scenarios, it was not feasible to inspect trace plots. Instead, a Gelman-Rubin statistic above 1.5 was used to filter out those runs that had not converged (~5% of the total runs).
+
+![_Traceplots of the  the MCMC samples of the $\alpha$(incidence) and $\beta$(trend) parameters for three different scenarios, with five chains each. Colours indicate the respective chains. _ ](./images/Ch3/fig_3_5_mcmc_traceplots.png)
+
+
+## Results ##
+
+### Hindcasting increasing, decreasing and stable trends ###
+
+
+A first evaluation of the hindcasting performance was done for three scenarios:
+ a scenario with an decreasing incidence trend (50% decrease over the time span), a scenario with constant incidence trend, and a scenario with increasing incidence trend (50% increase over the timespan).  For all of these initial scenarios, a disease type 1 was assumed, over 20 time units, and with two diagnostic tests used. 
+
+Data was simulated under these three scenarios, and the posterior distribution was evaluated using the JAGS implementation of the framework as described earlier. Figure 3.6 shows the posterior distributions for the incidence parameter $\alpha$, the slope parameter $\beta$, and the mean incidence $\hat{\lambda}$ using data from the three scenarios. 
+
+![_Density plots for the MCMC samples of $\alpha$ and $\beta$ from the posterior, fitted to data generated assuming populations with increasing (top row), decreasing(middle row), and constant trends (bottom row) of incidence. Each colour for a density distribution indicates the results from a single chain The vertical line indicate the true parameter values._](./images/Ch3/fig_3_6_posterior_trend.png)
+
+Figure 3.6 clearly indicates that the posterior distribution of the trend parameter differ significantly between the increasing, the constant and the increasing trend scenarios, and correctly identifies the direction of change, with the 95 % credible intervals excluding the zero for the increasing and decreasing scenario. In each scenario the posteriors associated with the five realisations (denoted by the five colours) overlap, indicating that the mcmc chain has converged. It is however interesting to note that the estimates are all biased compared to the true value.
+
+![_Histogram of estimated times since infection, together with the trend line based on estimated parameter values of $f_{tsi}(t)$ (red) and the trend line based on true parameter values for $f_{tsi}(t)$(black). Bars indicate the proportion of mean posterior estimates of infection times for individuals falling into that time point. Grey shading indicates the 95% posterior credible interval for the trend. _](./images/Ch3/fig_3_7_hist_tsi.png)
+
+The distribution of estimated infection times across the population of samples is plotted in Figure 3.7. This figure displays the histogram of of the mean posterior estimates of the infection times, overlaid with a red line indicating the probability distribution of times-since-infection (TSI) defined by the mean posterior estimates of the trend and intercept parameters. The black line indicates the TSI distribution defined by the true parameters and the definition of $f_tsi(t)$. The true trend curve and the estimated trend curves follow each other reasonably well, and the histogram of estimated times since infections also seem to follow the true trend.  However, there seem to be small bias in very recent infections - the final bar of the histogram is lower than preceding ones, and the trend (in particular the decreasing trend) seem to be dragged down by this. This seem to indicate that the source of the bias is a minor tendency for  the hindcasting framework to estimate very recent infections as having been infected for a longer time period.
+
+![_Histograms of actual times of infection generated under the different scenarios, (counting multiple infections per individual separately) together with estimated trend line. Grey shading indicate 95% posterior credible intervals of the linear trend _](./images/Ch3/fig_3_8_hist_ongoing.png)
+
+As mentioned in section 3.3.3, because of the way reinfections hide preceding infections, the trend lines are roughly exponentially increasing for all three scenarios. 
+The good fit of the estimated trend can be better seen by viewing them in a traditional manner as indicating incidence of cases over time (see figure 3.8). This graph shows the linear trend lines defined by the estimated parameters, together with histograms of the number of cases per time period as they occurred. 
+
+### The effect of relative rate of change of incidence ###
+
+
+![_Estimated trend lines (thin lines) for different disease types (indicated by colour), using different combinations of number of sampled positive individuals and strength of slope. The thick black lines indicate the true trend line_](./images/Ch3/fig_3_9_slopeXdisease_lines.png)
+
+Following the evaluation of the individual runs, the performance was further evaluated by generating data with different slopes of the incidence trend, with different number of collected positive samples, and different disease types. 
+Figure 3.9 shows the mean posterior estimated trends from applying the hindcasting framework to generated data sets for each combination of slope, sample size and disease types.  These plots indicate that the mean of the posterior distribution of the trend parameter usually correspond well with the true trend lines (indicated in black), if the sample size was 500 positive individuals or more.  For trends of +/-25%  change over the time period and samples sizes of 250 or less, the estimated trend was no longer reliable, and could even have the wrong direction of slope. There was no obvious relationship between disease type and performance. 
+
+![_Posterior Credible intervals for the slope parameter of the trend from scenarios with different sample size and relative slope. Thick grey line indicates zero slope, dashed black line indicate true slope. Dots indicate mean posterior estimate of the slope; lines indicate 95% posterior credible interval. Color indicate different disease type_](./images/Ch3/fig_3_10_slopeXdisease_ci.png)
+
+It is of interest to quantify the level of uncertainty in the estimated trend. Figure 3.10 show posterior credible intervals of the trend parameter in the various scenarios. Here it can be clearly seen that with a sample size of 2000 positive individuals, all posterior credible intervals exclude zero for the scenarios with 50% increase, 25% decrease, and 50% decrease over the time period of interest.  With 1000 samples, the posterior credible intervals exclude zero for the +/-50% change scenarios.  With 500 samples, the maximum posterior estimates are still close to the true values for most scenarios, but the credible intervals start overlapping zero. At 250 samples or less, the posterior estimates of all scenarios become unreliable. Again, no obvious pattern between different disease types can be seen. 
+
+
+![_Proportion of "successful" trend estimates versus sample size. "Succesful" is defined as either proportion of mean posterior trend estimates with correct sign, or proportion of posterior credible intervals excluding zero. Dots indicate proportion of the 11 replicates that succeeded, color indicate different disease type_](./images/Ch3/fig_3_11_slopeXdisease_performance.png)
+
+Figure 3.11 shows the reliability of the posterior estimates. summarised in terms of the proportion of successful estimates. This is defined either as the posterior credible interval exclude zero; or where the mean posterior estimate manage to distinguish an increasing from a decreasing scenario (i.e. the mean posterior estimate of the slope has correct sign). Note that these proportion are somewhat unreliable, as we only have 11 replicates for each point. Nevertheless, some interesting patterns can be seen. A proportion of 75% of runs excluding zero seems to be reached at 1000 samples for the 50% increase, 25% and 50% decrease scenarios; for the +/-50% change scenarios, 500 samples seem to have been enough. Also, as long as the number of samples are 250 or above,  the hindcasting procedure can distinguish between an increasing and a decreasing trend, as indicated by the upper row, though it seems more difficult to correctly identify an increasing trend than a decreasing one. As in the graphs above, no clear patterns between different disease types could be identified. 
+
+### Interaction of test kinetics and number of tests ###
+
+![_Posterior Credible intervals for the slope parameter of the trend from scenarios with different sample size and number of tests used. Thick grey line indicates zero slope, dashed black line indicate true slope. Dots indicate mean posterior estimate of the slope; lines indicate 95% posterior credible interval. Colour indicate type of disease.  Column indicate whether only antibody tests was used, only nucleic acid based tests, or both types of tests combined _](./images/Ch3/fig_3_12_ntestXdisease_ci.png)
+
+The effect of combining diagnostic tests for hindcasting, compared to using only single tests, was evaluated in scenarios assuming a 50% increasing trend (see figure 3.12). Whereas the combination of tests performed well for sample sizes above 250, the single-test scenarios showed some peculiarities. Scenarios with a single antibody test and disease type 3 produced exceptionally bad estimates of the trend no matter the sample size. On the other hand, scenarios with disease type either 1 or 2 fell down when assuming only a nucleic-acid based test. Equally surprising is that for disease type 1 and 2, the performance was almost identical with a single antibody test, as with a combined test; similarly with disease type 1 and nucleic acid test. Looking at the test kinetics of the three types of diseases in figure 3.4 does not provide an obvious reason for why  e.g. disease type 1 and 2 would work with antibody tests but not nucleic acid test. 
+
+
+
+
+### Performance under three scenarios representing real-world settings ###
+
+
+
+![_Posterior Credible intervals for the slope parameter of the trend from three different scenarios with real-world plausible parameters. For the Scrapie and Chlamydia scenarios, the trend was fixed and the sample size varied. For the Squirrelpox scenario, sample size was fixed at 250 animals, and the trend varied.  Dots indicate mean posterior estimate of the slope; lines indicate 95% posterior credible interval. Black dashed lines indicate true trend, and light-grey line indicate zero. _](./images/Ch3/fig_3_13_scenarios_ci.png)
+
+The resulting estimates of the three different cases-studies using real-world plausible parameters can be seen in figure 3.13.
+
+The top Scrapie-based scenario indicate that for these parameters, i would be possible to prove a disease reduction with as few as 100 samples, seeing as all but one of the posterior credible intervals exclude zero.  With 1000 samples, the PCI indicate the correct slope to within a factor 2.
+
+For the chlamydia-based scenario, 500 cross-sectional samples would be needed to prove that the the trend is increasing; with 2000 cross-sectional samples, the correct slope could be estimated to within a factor 2. 
+
+Finally, with the squirrelpox scenario, it was assumed that only a limited number of animals would be able to be caught. Assuming that 250 animals were caught, the true trend would have to be +/- 50%  change in incidence over the three years, in order to conclusively demonstrate an increasing or decreasing trend.
+
+## Discussion ##
+
+This chapter has introduced and tested a novel technique for hindcasting the history of exposure to disease in a population using only cross-sectional data combined with information on pathogen test kinetics.  The results demonstrate that this procedure enable the estimation changes in disease incidence over time. The results also demonstrated how this approach is able to distinguish between an increasing trend and a stable, or decreasing trend, as well as produce posterior estimates quantifying this disease trend.  This goes beyond previous sero-incidence studies which estimated the average incidence in a population, without attempting to estimate temporal trends in prevalence. [refs here!]
+
+The use of Lotka-Volterra (LV) equations to describe the pathogen-host dynamic, and thus the paired-test development over time, made it possible to consider several different archetypes for the pathogen-host dynamic. Hindcasting was found to be  possible for all of the different archetypes examined. Further, different archetypes proved to result in  very similar overall hindcasting performance, with the exception of robustness to differing number of tests used. The result on number of tests versus performance in 3.6.3 seem to indicate that a combination of diagnostic tests are more robust across the board than a single diagnostic test; and that it may be possible to use a single diagnostic test for hindcasting, but it may also fail completely. This seem to warrant more research into the specific requirements of disease kinetics for hindcasting. 
+
+The results from evaluating scenarios with parameters close to observed epidemiological patterns in Scrapie, Chlamydia, and Squirrelpox, indicate that useful precision levels can be reached with realistic sample sizes.
+
+ In real world applications, the kinetics used to inform the hindcasting technique would likely be derived from other published data, such as experimental infection studies. In such cases, the LV calculations could be replaced with a simple lookup table for the expected mean response of the test at a given point in time, combined with information on the variability of the test. Alternatively models, such as the LV equations, fitted to the available data could be used.
+
+The natural pairing of tests to model with the LV approach is a nucleic acid test for genetic material from the pathogen (e.g. a realtime PCR test), combined with a test measuring the antibody test response, such as a quantitative ELISA test. However, any type of paired tests commonly used for pathogen diagnostics could be used. Other examples are a pairing of a culture-based test combined with IGG antibodies, or even the severity of symptoms measured on an ordinal scale combined with viral load measurements. Thus, a wide range of diagnostic measures could potentially be used within the hindcasting framework presented here.  
+
+The results from this and the next chapter provides strong arguments in favor of recording the raw test results together with the resulting diagnosis, and for utilizing more than one diagnostic test whenever feasible. 
+Thus, when setting up surveillance systems, it should be emphasised that   the results of all diagnostic tests used should be recorded in the database.  Such a database should also detail the quantitative level of evidence, in addition to the regular binary ”infected/non-infected” result. The cost of conducting and recording the result of two diagnostic tests should be considered in relation to the benefits. For example in terms of feedback to farmers and policymakers on the impact of control measures and for detecting any potential costly changes in the prevalence. It should also be noted that the methods introduced here enable such benefits to be derived from cross-sectional data and therefore the additional costs described above should also be compared with the costs of running longitudinal studies.
+
+An obvious extension to the work presented here is to consider more complex changes in pathogen incidence than simple linear trends. In principle, since the hindcasting procedure provides approximate times of exposure any model that describe the pattern of times of exposure could be considered. The linear trends described here are primarily suitable for endemic diseases. Therefore, in the following chapter, the development of the hindcasting technique is continued by considering  an outbreak of the pathogen in which the rise and fall of the epidemic is adequately described, using a lognormal distribution of exposure times instead of linear trends to capture the rise-and-fall of epidemics.
+
+**References**
+

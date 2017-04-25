@@ -12,44 +12,35 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir = normalizePath('../'))
 ```
 
-## Hindcasting FMD incidence in Cameroon using surveillance data with multiple diagnostics 
-```{r read_data}
+# Hindcasting FMD incidence in Cameroon using surveillance data with multiple diagnostics 
+```{r read_data, echo=FALSE,include=FALSE}
 library(tidyverse)
 output.path<-"./output"
 code.path<-"./code"
 function.path<-"./code/functions"
-
 textdata.path<-"./textdata"
-
 binarydata.path<-"./binarydata"
 
-# 
-# bronsvoort_orig_data<-read.table(file.path(textdata.path,"FMD-Gustaf.csv"),sep=",",header=T,row.names=1)
-# set.seed(1000)
-# eval_data_ndx<-sort(sample(1:nrow(bronsvoort_orig_data),200))
-# ## eval_data_ndx
-##[1]   15   18   33   34   37   40   57   60   61   72   80   99  101  102  111  117  119  130  135  138  139  146  147  176  187  197  206  211  217 226 227
-##[32]  245  254  255  257  262  264  276  297  306  319  353  359  360  379  387  413  418  426  427  439  457  461  468  469  472  481  505 506  508 515  517
-##[63]  528  532  538  560  571  581  582  583  625  634  635  644  652  658  659  664  666  677  696  730  750  762  765  776  783  792  799  801  807  808  819
-##[94]  823  828  836  840  844  845  850  867  869  884  887  893  897  899  903  904  910  914  915  917  923  924  936  937  947  949  950  953  972  973  987
-##[125]  988 1002 1006 1012 1031 1075 1084 1085 1087 1093 1098 1117 1118 1121 1123 1126 1129 1131 1133 1138 1152 1156 1163 1196 1208 1231 1233 1239 1243 1244 1257
-##[156] 1261 1266 1270 1274 1278 1292 1299 1301 1304 1313 1330 1339 1341 1345 1352 1365 1371 1380 1407 1409 1411 1424 1425 1427 1434 1435 1439 1456 1463 1507 1511
-##[187] 1516 1517 1524 1533 1539 1545 1553 1566 1569 1594 1595 1596 1615 1618
-# bronsvoort_eval_data<-bronsvoort_orig_data[eval_data_ndx,]
-# write.csv(bronsvoort_eval_data,file=file.path(textdata.path,"FMD-Gustaf-eval.csv"))
-# bronsvoort_training_data<-bronsvoort_orig_data[-eval_data_ndx,]
-# write.csv(bronsvoort_training_data,file=file.path(textdata.path,"FMD-Gustaf-training.csv"))
-# rm(bronsvoort_orig_data)
-# rm(bronsvoort_eval_data)
-# rm(bronsvoort_training_data)
-bronsvoort_training_data<-read.csv(file.path(textdata.path,"FMD-Gustaf-training.csv")) 
+source(file.path(code.path,"fmd-datacleaning.R"))
+source(file.path(code.path,"fmd-dataviz.R")))
 
+```
+
+```{r plots, echo=FALSE,include=FALSE}
+
+library(gridExtra)
+p_3diagnostics_grid<-grid.arrange(p_month_hist,p_probang,p_vnt,p_elisa,nrow=4,ncol=1)
 
 ```
 ## Introduction
 
 
-This section describes an analysis of data collected on FMD prevalence in a dataset of 1500 cattle distributed across XX herds. The goal of the data collection was to get information on the time since last FMD incursion in a herd. Various aspects of the dataset has been described and analyzed in a number of publications [1,2,3,...]. Here, we will describe how the prevalence data can be transformed to provide information on disease incidence. 
+We here demonstrate an approach to estimating the time since last incursion of Foot-and-Mouth disease virus(FMDV) for individual herds, in an endemic, low income setting. The data set we analyze covers 1500 cattle distributed across XX randomly sampled cattle herds  from the YY area in Cameroon. This data has been extensively described elsewhere [1,2,3,...]. The cattle were tested for the presence of FMDV using a range of diagnostic approaches, including antibody tests, virus culture, and clinical signs.  In addition to diagnostics tests, the herdsmen was asked to provide estimates for the time since last incursion of FMDV. The herdsmen estimates has been shown to be broadly reliable[ref]. In the following sections, we will demonstrate how we developed a model for predicting the herdsman estimates from diagnostic test results. This model can thus be used to hindcast the time since incursion for a given herd, and estimates can be combined to provide overall estimates of spatial patterns or trends of FMD in the YY district of Cameroon. 
+
+
+## Methods
+
+
 
 ## Data
 
