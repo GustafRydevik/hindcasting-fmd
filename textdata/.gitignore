@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 /textdata/FMD-Gustaf-training.csv
 /textdata/FMD-Gustaf-eval.csv
 /textdata/*
+=======
+FMD-Gustaf-training.csv
+FMD-Gustaf-eval.csv
+./textdata
+>>>>>>> 3819c875995aa6613e14debdb22709fd295637c3
