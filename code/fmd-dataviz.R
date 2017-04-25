@@ -21,5 +21,3 @@ bronsvoort_training_data%>%ggplot(aes(x=monlast))+geom_histogram()->p_month_hist
 
 bronsvoort_training_data%>%
   ggplot(aes(x=factor(monlast),y=FMD_cELISA))+geom_boxplot()->p_elisa
-library(gridExtra)
-grid.arrange(p_month_hist,p_probang,p_vnt,p_elisa,nrow=4,ncol=1)

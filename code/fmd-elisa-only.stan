@@ -46,22 +46,27 @@ transformed parameters  {
  
   real elisa_latent_est[Ne];
   real elisa_latent_pred[Np];
-  
+  real<lower=0> monlast_censored_est[Ne];
   //sigma <- 1 / sqrt(tau); 
   
   for (i in 1:Ne) {
     
        
+        if(monlast_est[hcode_est[i]]<age_est[i]){
+      monlast_censored_est[i]= monlast_est[hcode_est[i]]*12;
+        }else{
+          monlast_censored_est[i]=120;
+        }
     //elisa 
     
-    elisa_latent_est[i] <- elisa_lambda_one/(1 + exp((elisa_lambda_two - 12*monlast_est[hcode_est[i]])/elisa_lambda_three));
+    elisa_latent_est[i] <- elisa_lambda_one/(1 + exp((elisa_lambda_two - monlast_censored_est[i])/elisa_lambda_three));
     
   }
   
   for (i in 1:Np) {
     
     //ELISA growth curve - shamelessly stolen from http://www.magesblog.com/2015/10/non-linear-growth-curves-with-stan.html    
-    elisa_latent_pred[i] <-  elisa_lambda_one/(1 + exp((elisa_lambda_two - 12*monlast_pred[hcode_pred[i]])/elisa_lambda_three));
+    elisa_latent_pred[i] <-  elisa_lambda_one/(1 + exp((elisa_lambda_two - monlast_pred[hcode_pred[i]])/elisa_lambda_three));
   }
   
   

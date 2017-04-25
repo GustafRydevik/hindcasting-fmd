@@ -111,7 +111,7 @@ dat_model<-c(dat_est,dat_pred,p=6)
 
 fileName <- file.path(code.path,"fmd-elisa-only.stan")
 resStan <- stan(fileName, data = dat_model,
-                chains =5,cores=5 ,iter = 10000, warmup = 5000, thin = 10,control = list(adapt_delta = 0.8))
+                chains =5,cores=5 ,iter = 1000, warmup = 500, thin = 10,control = list(adapt_delta = 0.8))
 
 pairs(resStan,pars=c("elisa_lambda_one","elisa_lambda_two","elisa_lambda_three","sigma"))
 
@@ -120,7 +120,8 @@ pairs(resStan,pars=c("elisa_lambda_one","elisa_lambda_two","elisa_lambda_three",
 ##A sigma of ~28 means that we're getting absolutely no information from 
 
 growth_pars<-summary(resStan,pars=c("elisa_lambda_one","elisa_lambda_two","elisa_lambda_three"))$summary[,"mean"]
-plot(growth_curve(1:150,growth_pars[1],growth_pars[2],growth_pars[3]))
+plot(FMD_cELISA~monlast,data=bronsvoort_training_data_clean,col="red")
+lines(growth_curve(1:150,growth_pars[1],growth_pars[2],growth_pars[3]))
 
 
 traceplot(resStan, pars = c("monlast_pred"), inc_warmup = TRUE)

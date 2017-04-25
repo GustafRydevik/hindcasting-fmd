@@ -5,7 +5,6 @@ data {
   int<lower=0> Np;
   
   
-  
   // covariates - estimation
   int<lower=0> hcode_est[Ne]; //herd id
   real<lower=0> age_est[Ne]; //age
@@ -50,22 +49,28 @@ transformed parameters  {
   real vnt_latent_est[Ne];
   real vnt_latent_pred[Np];
   
+  real<lower=0> monlast_censored_est[Ne];
   //sigma <- 1 / sqrt(tau); 
   
   for (i in 1:Ne) {
     
-       
+        if(monlast_est[hcode_est[i]]<age_est[i]*12){
+      monlast_censored_est[i]= monlast_est[hcode_est[i]];
+        }else{
+          monlast_censored_est[i]=120;
+       }   
     //elisa 
     
-    vnt_latent_est[i] <- decay_start*exp(-monlast_est[hcode_est[i]]*decay_scale);
+    vnt_latent_est[i] = decay_start*(exp(-monlast_censored_est[i]*decay_scale)+decay_asym);
     
   }
   
   for (i in 1:Np) {
     
     //ELISA growth curve - shamelessly stolen from http://www.magesblog.com/2015/10/non-linear-growth-curves-with-stan.html    
-    vnt_latent_pred[i] <- decay_start*exp(-monlast_est[hcode_pred[i]]*decay_scale);
-  }
+    
+    vnt_latent_pred[i] = decay_start*(exp(-monlast_pred[hcode_est[i]]*decay_scale)+decay_asym);
+ }
   
   
 }

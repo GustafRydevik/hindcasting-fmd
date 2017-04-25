@@ -13,7 +13,7 @@ binarydata.path<-"./binarydata"
 
 bronsvoort_training_data_clean<-bronsvoort_training_data_clean[bronsvoort_training_data_clean$FMD_cELISA!=0,]
 
-bronsvoort_training_data_clean<-bronsvoort_training_data_clean[!is.na(bronsvoort_training_data_clean$FMD_VNT_O),]
+bronsvoort_training_data_clean<-bronsvoort_training_data_clean[!(is.na(bronsvoort_training_data_clean$FMD_VNT_O)|is.na(bronsvoort_training_data_clean$FMD_VNT_SAT2)|is.na(bronsvoort_training_data_clean$FMD_VNT_A)),]
 
 ###Splitting up the data into prediction and estimation
 set.seed(1337)
@@ -42,7 +42,7 @@ with(ind_df_est,
        vnt     = VNTAny,
        elisa_obs=FMD_cELISA,
        hcode = hcode_stan_est,
-       vnt_obs=FMD_VNT_SAT2
+       vnt_obs=pmax(FMD_VNT_SAT2,FMD_VNT_O,FMD_VNT_A)
      ))
 
 names(dat_est)<-paste(names(dat_est),"_est",sep="")
@@ -68,7 +68,7 @@ with(
     vnt     = VNTAny,
     elisa_obs=FMD_cELISA,
     hcode = hcode_stan_pred,
-    vnt_obs=FMD_VNT_SAT2
+    vnt_obs=pmax(FMD_VNT_SAT2,FMD_VNT_O,FMD_VNT_A)
   )
 )
 
@@ -92,7 +92,7 @@ resStan <- stan(fileName, data = dat_model,
                 chains =5,cores=5 ,iter = 10000, warmup = 5000, thin = 10,control = list(adapt_delta = 0.8))
 
 pairs(resStan,pars=c("decay_start","decay_scale","decay_asym","sigma"))
-traceplot(resStan,pars=c("decay_start","decay_scale","decay_asym","gamma_shape","gamma_scale"))
+traceplot(resStan,pars=c("decay_start","decay_scale","decay_asym","sigma"))
 traceplot(resStan, pars = c("monlast_pred"), inc_warmup = TRUE)
 
 
