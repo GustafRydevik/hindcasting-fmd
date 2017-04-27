@@ -35,8 +35,7 @@ p_3diagnostics_grid<-grid.arrange(p_month_hist,p_probang,p_vnt,p_elisa,nrow=4,nc
 
 ## Abstract
 
-This chapter describes a statistical approach to combine data from multiple diagnostic tests with different temporal characteristics to hindcast the historical trend of an infectious disease epidemic before the time of detection. Assuming a cross-sectional sample of individuals infected with a pathogen, a Bayesian MCMC approach is used for estimating time of exposure and the overall epidemic trend in the population prior to the time of sampling.  It is demonstrated how to utilize this approach to distinguish between decreasing and non-decreasing trends. Further, the difference in performance of this approach is described for idealized pairs of diagnostic tests, based on different host-pathogen dynamic scenarios.
- Finally, we discuss the benefits of this novel methodology for the management of infectious diseases, and for evaluation of policy interventions. 
+This paper discuss how cross-sectional data from multiple diagnostic tests with different temporal characteristics to hindcast times since incursion and epidemiological patterns of an infectious disease in an endemic setting. Assuming a cross-sectional sample of individuals infected with a pathogen and information on how the expected result of each diagnostic test varies following infection, a Bayesian MCMC approach is used for estimating time of exposure. We demonstrate this approach on a dataset of endemic FMD infection in randomly sampled herds in Cameroon. In addition, we use simulation approaches to demonstrate that our approach candistinguish between decreasing and non-decreasing endemic trends. Finally, we discuss the benefits of this novel methodology for the management of infectious diseases, and for evaluation of policy interventions. 
  
 ## Introduction
 -State of the research of exploiting within-host processes
@@ -96,7 +95,8 @@ The most basic scenario used for hindcasting a disease trend represents an endem
 
 This basic scenario was then modified to a scenario where there the force of infection  has been changing over time according to a linear trend, $\lambda=\alpha+\beta t$.  However, this linear trend describes the incidence over time if the cases are reported continuously. If, instead, the cases are collected at a single point in time at some point after infection, the distribution of interest is then  the distribution of times since last infection(”tsi”) in the population,  hereafter denoted $f_{tsi}(t)$, under the assumption of a linear trend. 
 
-The incidence of infection can also be referred to as the average *hazard rate* of infection. Given a constant hazard rate $lambda$, the probability of the event $I% of having been infected by time $t$ is given by $1-e^{-\lambda t}$.  In the linear trend scenario, $\lambda=\alpha+\beta t$ as mentioned above. Because of the linearity of the trend,  over a time period from 0 to $t$, the probability of having been infected before that time is equivalent to the probability of having been infected under a constant trend of the mean incidence over the period, $\hat{\lambda }=\alpha+\beta t/2$, and so by analogue to the constant case, this probability can be written as  $P(I<t)=1-e^{-(\alpha+\beta*t/2)*t}$. From this, the probability density function for the times since infection can be calculated as $f_{tsi}(t)=d(P(i<t))/dt=(\alpha+\beta t)e^{-(\alpha+\beta t/2)t}$. 
+The incidence of infection can also be referred to as the average *hazard rate* of infection. Given a constant hazard rate $lambda$, the probability of the event $I% of having been infected by time $t$ is given by $1-e^{-\lambda t}$.  In the linear trend scenario, $\lambda=\alpha+\beta t$ as mentioned above. Because of the linearity of the trend,  over a time period from 0 to $t$, the probability of having been infected before that time is equivalent to the probability of having been infected under a constant trend of the mean incidence over the period, $\hat{\lambda }=\alpha+\beta t/2$, and so by analogue to the constant case, this probability can be written as  $P(I< t)=1-e^{-(\alpha+\beta*t/2)*t}$. 
+From this, the probability density function for the times since infection can be calculated as $f_{tsi}(t)=d(P(i< t))/dt=(\alpha+\beta t)e^{-(\alpha+\beta t/2)t}$. 
 
 In the implementation, this distribution was assumed to be censored at some time point in the past $C$, and it was further assumed that it was possible a priori to distinguish individuals that had been infected at some point during this time period, from naive individuals.  When implementing such a censoring, the equation above needs to be modified by an additional scaling factor
 $1-e^{-(\alpha+\beta C/2) C}$, equal to the integral of $p(t)$ over the time span $(0,C)$. The full equation used to represent the distribution of exposure times was thus 
@@ -284,17 +284,16 @@ library(gridExtra)
 grid.arrange(p_month_hist,p_probang,p_vnt,p_lesion_foot,p_lesion_mouth,p_elisa,nrow=3,ncol=2)
 
 ```
-A basic model, just using the cameroon data itself, would likely look something like the following:
 
 
-We have diagnostic data at the individual cow level; Probang measurements, VNT measurements, and aged lesions:
+We have diagnostic data at the individual cow level; Probang measurements, VNT measurements, and ELISA measurements:
 $y_{i1}=Probang_{i}$ (which is binary)
 $y_{i2}=VNT_{i}$ (which could be treated as binary or as continous)
 $y_{i3}=Lesion_{i}$ (which is ordinal).
 
 These are all measurements of three different latent processes. 
 The probang results measures whether or not it was positive to successfully culture FMDV from the throat(?) of the animal, and can thus be seen as an indirect indicator of the amount of virus present in the throat. This is the first latent component, 
-$l_{i1}(d_i)=exp(d_i,\theta_{probang})$. We here assume that the the virus declines exponentially following infection, which is a simplistic but useful approximation. [Is it?]
+$l_{i1}(d_i)=exp(d_i,\theta_{probang})$. We here assume that the the virus declines exponentially following infection, which is a simplistic but useful approximation.
 
 The VNT results is an indicator of the level of FMD-specific antibodies present in the blood of the animal. This is the second latent component,
 $l_{i2}(d_i)=Logistic(d_i,\theta_{VNT})$. In this case we assume that the antibody response follows a logistic growth curve.
@@ -321,6 +320,10 @@ $\theta=f_1(T_{infected})+g_1(age,age^2))$
 
 $P(Vnt=1)=Bernoulli(logit(\theta_2))$
 $\theta=f_2(T_{infected})+g_2(age,age^2))$
+
+#### Analyses of the cameroon test data 
+
+
 
 ## Simulations of different timescales and types of diseases 
 Should we include this? if so, copy from  thesis
