@@ -6,7 +6,8 @@ function.path<-"./code/functions"
 textdata.path<-"./textdata"
 
 binarydata.path<-"./binarydata"
-
+library(tidyverse)
+library(rstan)
 #bronsvoort_training_data
 
 

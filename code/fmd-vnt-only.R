@@ -97,7 +97,7 @@ traceplot(resStan, pars = c("monlast_pred"), inc_warmup = TRUE)
 
 
 herd_df_pred<-left_join(herd_df_pred,ind_df_pred%>%group_by(hcode)%>%summarise(vnt_mean=mean(FMD_VNT_SAT2),vnt_sd=sd(FMD_VNT_SAT2)),by="hcode")
-plot(herd_df_pred$vnt_mean,summary(resStan,"monlast_pred")$summary[,"mean"])
+#plot(herd_df_pred$vnt_mean,summary(resStan,"monlast_pred")$summary[,"mean"])
 
 monlast_pred_stan<-as.data.frame(summary(resStan,pars="monlast_pred")$summary)
 monlast_pred_stan$hcode<-herd_df_pred$hcode
