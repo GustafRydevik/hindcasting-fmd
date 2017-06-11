@@ -32,3 +32,15 @@ binarydata.path<-"./binarydata"
 # rm(bronsvoort_training_data)
 # rm(bronsvoort_joined)
 bronsvoort_training_data<-read.csv(file.path(textdata.path,"FMD-Gustaf-training.csv")) 
+
+bronsvoort_training_data$Probang<-with(bronsvoort_training_data,(PbP.A+PbP.O+PbP.SAT2)>0)
+bronsvoort_training_data$VNTAny<-with(bronsvoort_training_data,(FMDS_A+FMDS_O+FMDS_SAT2)>0)
+with(bronsvoort_training_data,table(Probang,monlast))
+
+bronsvoort_training_data_clean<-bronsvoort_training_data[
+  complete.cases(bronsvoort_training_data[c("Probang","monlast","age","VNTAny","FMD_cELISA")]),]
+
+
+herd_monlast<-unique(bronsvoort_training_data_clean[c("hcode","monlast")])
+
+
